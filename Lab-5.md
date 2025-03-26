@@ -25,14 +25,15 @@ This lab uses a preprocessed dataset (~7 GB) hosted on OneDrive.
 
 ⚠️ Due to OneDrive’s limitations, **you must download this file manually via your browser**:
 
-[Download Lab 5 Data from OneDrive](https://tuprd-my.sharepoint.com/my?id=%2Fpersonal%2Ftug87422%5Ftemple%5Fedu%2FDocuments%2FTeaching%2FNSCI3000%5FNeuroimagingTopic%5FS25%2F%5F%5Flabs%2F%5F%5FforNSCI8010%5FL2L3stats%2BPPI%2Ezip&parent=%2Fpersonal%2Ftug87422%5Ftemple%5Fedu%2FDocuments%2FTeaching%2FNSCI3000%5FNeuroimagingTopic%5FS25%2F%5F%5Flabs&ga=1)
+
+[Download Lab 5 Data from OneDrive](https://tuprd-my.sharepoint.com/:u:/g/personal/tug87422_temple_edu/ESth1ajeuLZIuGqLeXKtv7IBMtM0lwj7zvXogjTt5TVbCA?e=GaaTLT)
 
 Once downloaded, move the file into your working directory and unzip it:
 
 ```bash
-mv ~/Downloads/forNSCI8010_L2L3stats+PPI.zip ~/Lab_5/
+mv ~/Downloads/__forNSCI8010_L2L3stats+PPI.zip ~/Lab_5/
 cd ~/Lab_5
-unzip forNSCI8010_L2L3stats+PPI.zip
+unzip __forNSCI8010_L2L3stats+PPI.zip
 ```
 
 This will extract Level 1 FEAT directories for runs 1–5 for each subject.
@@ -43,29 +44,31 @@ This will extract Level 1 FEAT directories for runs 1–5 for each subject.
 
 ### 2.1. Launch FEAT
 ```bash
-feat &
+Feat &
 ```
 In the FEAT window:
 - Change from **First-level analysis** → **Higher-level analysis**
 - Change from **Full analysis** → **Statistics only**
 
-![FEAT window setup for Level 2](images/lab5_image_01.png)
+![FEAT window setup for Level 2] (https://github.com/user-attachments/assets/4b5b70e7-4af1-44b6-8af4-5cb64e249954)
 
 ### 2.2. Configure the Data Tab
 - Output directory: `/home/student/Lab_5/L2_OUTPUT`
 - Number of inputs: **5** (one for each run)
 - Click **Select FEAT directories**:
   - For each row, click the folder icon and navigate to the appropriate run-level `.feat` directory:
-    - e.g., `sub-104/L1_task-trust_model-01_type-act_run-01_sm-6.feat`
-    - Repeat for all five runs.
+    - e.g., `/home/student/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-104/L1_task-trust_model-01_type-act_run-01_sm-6.feat`
+    - Repeat for all five runs (copy the first feat name and change the run number).
 
-![Selecting input FEAT directories](images/lab5_image_02.png)
 
 ### 2.3. Configure the Stats Tab
 - Set **Mixed effects** to: `Fixed Effects`
 - Click **Full model setup**
   - EV1 Name: `Run_Average`
   - For each input, set the EV1 value to `1`
+![image](https://github.com/user-attachments/assets/250ee0a1-3d9e-4838-9d7f-d0c0e3b5d434)
+
+  - Set 2 contrasts, one positive (+1) one negative (-1)
 
 ![Fixed effects model setup in Level 2](images/lab5_image_03.png)
 
@@ -79,26 +82,30 @@ In the FEAT window:
 
 ### 3.1. Launch FEAT Again
 ```bash
-feat &
+Feat &
 ```
 In the FEAT window:
 - Select **Higher-level analysis**
 - Choose **Statistics only**
 
 ### 3.2. Configure the Data Tab
-- Output directory: `/home/cladmin/Lab_5/L3_Cope11`
+![Selecting input FEAT directories L3]()
+
+- Output directory: `/home/student/Lab_5/L3_Cope11`
 - Set input type to: `3D cope images from FEAT directories`
 - Number of inputs: **6** (one per subject)
 - Click **Select FEAT directories**, then add the `cope11.feat` directory for each subject.
 
 **Pro-tip:** You can use the terminal to quickly list the paths:
 ```bash
-ls -1d `pwd`/sub-1*/L2*-act_sm-6.gfeat/cope11.feat/stats/cope1.nii.gz
+ls -1d `pwd`/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-1*/L2*-act_sm-6.gfeat/cope11.feat/stats/cope1.nii.gz
 ```
 Then copy the output, and in the FEAT GUI, click **Paste** at the bottom of the selection window.
-Use `Ctrl+Y` to paste and press OK.
+![image](https://github.com/user-attachments/assets/f6fec011-7668-4211-8016-09c09039aaa3)
 
-![Selecting cope1 inputs for Level 3](images/lab5_image_04.png)
+Use `Ctrl+Y` to paste and press OK.
+![image](https://github.com/user-attachments/assets/57e67a72-1c96-4019-9e23-7bf33c538c5f)
+
 
 ### 3.3. Configure the Stats Tab
 - Mixed effects: `FLAME 1`
@@ -107,10 +114,9 @@ Use `Ctrl+Y` to paste and press OK.
   - Set all EV1 values to `1`
 - Under **Contrasts & F-tests**, set:
   - Number of contrasts: `2`
-  - Contrast 1: Name = `positive`
-  - Contrast 2: Name = `negative`
+  - Contrast 1: Name = `positive`, value +1
+  - Contrast 2: Name = `negative`, value -1
 
-![Level 3 design matrix and contrasts](images/lab5_image_05.png)
 
 ### 3.4. Post-Stats Tab
 - Leave all settings as default
