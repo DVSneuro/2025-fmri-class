@@ -50,7 +50,7 @@ In the FEAT window:
 - Change from **First-level analysis** → **Higher-level analysis**
 - Change from **Full analysis** → **Statistics only**
 
-![FEAT window setup for Level 2] (https://github.com/user-attachments/assets/4b5b70e7-4af1-44b6-8af4-5cb64e249954)
+![FEAT window setup for Level 2](https://github.com/user-attachments/assets/4b5b70e7-4af1-44b6-8af4-5cb64e249954)
 
 ### 2.2. Configure the Data Tab
 - Output directory: `/home/student/Lab_5/L2_OUTPUT`
