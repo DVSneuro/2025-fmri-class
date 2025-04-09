@@ -57,7 +57,9 @@ fslview_deprecated JLC &
 
 ## Move ROI to Native Space (cf. Lab 4)
 
-Normalize standard space mask (JLC.nii) into native space using pre-estimated transformation matrix, the output falls in the your Lab_6 directory (reg/standard2example_func.mat). Make sure you use the name you set for your sequence pilot output feat directory in Lab 4 to swap out “YOUR_OUTPUT.feat” in the following command to be able to locate the local space reference image and transformation matrix.
+Normalize standard space mask (JLC.nii) into native space using pre-estimated transformation matrix, the output falls in the your Lab_6 directory (reg/standard2example_func.mat). 
+
+> Make sure you use the name you set for your sequence pilot output feat directory in Lab 4 to swap out “YOUR_OUTPUT.feat” in the following command to be able to locate the local space reference image and transformation matrix.
 ```bash
 flirt -in JLC.nii.gz \
   -ref ~/Lab_4/YOUR_OUTPUT.feat/example_func.nii.gz \
