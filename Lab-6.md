@@ -227,4 +227,10 @@ Rerun PPI with a different seed region. How do results differ from the SMA seed 
 ### Q4
 Compare MELODIC ICA outputs to GLM post-stats. What stands out?
 
+### Q5
+How does including a **PPI interaction term** change the interpretation of task effects?
+ 
+### Q6
+What are the advantages and limitations of ICA compared to GLM in task fMRI?
+
 ---
