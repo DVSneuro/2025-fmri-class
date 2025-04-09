@@ -67,11 +67,11 @@ flirt -in JLC.nii.gz \
   -datatype float
 ```
 
-Threshold away voxel of lower intensity
+Threshold away voxels of lower intensity
 ```bash
 fslmaths standardMask2example_func_JLC -thr 0.5 standardMask2example_func_JLC
 ```
-binarize to preserve ROI(i.e., make within-ROI voxels 1s and out-ROI 0s) 
+Binarize (i.e., make within-ROI voxels 1s and out-ROI 0s) 
 ```bash
 fslmaths standardMask2example_func_JLC -bin standardMask2example_func_JLC
 ```
@@ -85,7 +85,7 @@ fslmeants -i ~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bo
   -m ~/Lab_6/standardMask2example_func_JLC.nii.gz \
   -o sub-10015_task-sharedreward-task_mb3me1_JLC.txt
 ```
-The output is average activation of that region in each volume of your subject across time
+The output is the average activation of that region in each volume of your subject across time
 ![Figure](images/lab06_image12.png)
 
 **Note**: you can also run this type of command on specific regions from your L1 activation results (e.g., L1 activation.feat/cluster_mask_zstat1.nii.gz) without doing any additional normalization/registration. For example, if you wanted the second cluster from your cluster_mask_zstat3.nii.gz file, you would run the following command (review your FEAT output and look at these images in fslview if this step does not make sense): 
@@ -129,10 +129,10 @@ Note that in your report.html output under the pre-stats section you should also
 ### 5.4 Registration Tab
 
 - Structural: `~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz`  
-- Lienar options:Use BBR and standard MNI defaults
+- Linear options: Use BBR and standard MNI defaults
 
-- Standard space option:Leave ask default  (MNI152_T1_2mm_brain)
-- Lienar options: Use Normal search and 12 DOF.
+- Standard space option: Leave as default  (MNI152_T1_2mm_brain)
+- Linear options: Use Normal search and 12 DOF.
 ![Figure](images/lab06_image08.png)
 ---
 
@@ -159,7 +159,7 @@ Set **Number of EVs** to **5** and configure as follows:
 
 3. Click the EV3 tab and make the following selections: 
 - EV name: Phys
-- Basic shape: Custom (1 column entry per volumeformat)
+- Basic shape: Custom (1 column entry per volume format)
 - Filename: select the folder icon and navigate to ~/Lab_6/sub-10015_task-sharedreward-task_mb3me1_JLC.txt
 - Convolution: NONE
 - DE-SELECT the option "Add temporal derivative" & “Apply temporal filtering”
@@ -180,7 +180,7 @@ Set **Number of EVs** to **5** and configure as follows:
 - EV name: PPI_Right 
 - Basic shape: Interaction 
 - Between Evs: 2 & 3 
-- Make zero: min, min,mean, min 
+- Make zero: min, min, mean, min 
 - DE-SELECT the option "Add temporal derivative"
  
 ![Figure](images/lab06_image07.png)
@@ -192,7 +192,7 @@ Set **Number of EVs** to **5** and configure as follows:
 Set **10 contrasts**. Fill based on course materials.
 
 ![Contrast matrix screenshot](images/lab06_image06.png)
-Select Done. A window displaying the model should pop up. The design matrix should look as follow:
+Select Done. A window displaying the model should pop up. The design matrix should look as follows:
 
 ![Design matrix screenshot](images/lab06_image03.png)
 
@@ -200,7 +200,7 @@ Close the window
 
 ## Post-Stats Tab
 
-Leave the default settings. Check that they are the same as in the picture below.  Press Go on the bottom left to run analysis
+Leave the default settings. Check that they are the same as in the picture below.  Press Go on the bottom left to run the analysis
 
 ![Figure](images/lab06_image11.png)
 
