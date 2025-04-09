@@ -35,15 +35,14 @@ mkdir ~/Lab_6/; cd Lab_6
 
 # Set brain atlas path
 atlas=/home/student/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz
+```
+Open the atlas' associated XML file to find region index that is associated the Juxtapositional Lobule Cortex (formerly Supplementary Motor Cortex).  
 
-# Open atlas' associated XML file to find region index that is associated the Juxtapositional Lobule Cortex (formerly Supplementary Motor Cortex).  
-```
-![Figure](images/lab06_image04.png)
-```
+``` bash
 microsoft-edge ~/fsl/data/atlases/HarvardOxford-Cortical.xml &
 ```
+![Figure](images/lab06_image04.png)
 > Note: FSL indexing is generally 0-based. Add 1 to the index for ROI voxel value. 
-
 
 ```bash
 # Extract with fslmaths
@@ -67,10 +66,11 @@ flirt -in JLC.nii.gz \
   -init ~/Lab_4/YOUR_OUTPUT.feat/reg/standard2example_func.mat \
   -datatype float
 ```
+
 Threshold away voxel of lower intensity
 ```bash
 fslmaths standardMask2example_func_JLC -thr 0.5 standardMask2example_func_JLC
-
+```
 binarize to preserve ROI(i.e., make within-ROI voxels 1s and out-ROI 0s) 
 ```bash
 fslmaths standardMask2example_func_JLC -bin standardMask2example_func_JLC
@@ -104,7 +104,6 @@ fslmaths cluster_mask_zstat3.nii.gz -thr 2 -uthr 2 cluster2 -bin
 Feat &
 ```
 Keep the default settings of First-level analysis and Full analysis are selected at the top of the Feat window.
----
 
 ### 5.2 Data Tab
 
@@ -125,7 +124,7 @@ Keep the default settings of First-level analysis and Full analysis are selected
 ![image](https://github.com/user-attachments/assets/acca4703-ea53-4313-99ab-8c6a5c5b8c10)
 
 Note that in your report.html output under the pre-stats section you should also see a link for MELODIC Data Exploration. Click on that link and view the output. You should see that MELODIC has reduced your data into a set of components (think back to the lecture and textbook and ask questions if this isn’t clear). Some of the spatial maps and time courses may resemble what you see in your GLM results. 
----
+
 
 ### 5.4 Registration Tab
 
@@ -145,7 +144,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Basic shape: Custom (3 column format)
 - Filename: Select the folder icon and navigate to: /home/student/ds005085/sub-10015/func/_guess_allLeftButton.txt
 - Convolution: Double-Gamma HRF
-- DE-SELECT the option "Add temporal derivative" 
+- DE-SELECT the option "Add temporal derivative"
+  
 ![Figure](images/lab06_image05.png)
 
 2. Click the EV2 tab and make the following selections: 
@@ -153,7 +153,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Basic shape: Custom (3 column format)
 - Filename: select the folder icon and navigate to /home/student/ds005085/sub-10015/func/_guess_allRightButton.txt
 - Convolution: Double-Gamma HRF
-- DE-SELECT the option "Add temporal derivative"  
+- DE-SELECT the option "Add temporal derivative"
+  
 ![Figure](images/lab06_image02.png)
 
 3. Click the EV3 tab and make the following selections: 
@@ -161,7 +162,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Basic shape: Custom (1 column entry per volumeformat)
 - Filename: select the folder icon and navigate to ~/Lab_6/sub-10015_task-sharedreward-task_mb3me1_JLC.txt
 - Convolution: NONE
-- DE-SELECT the option "Add temporal derivative" & “Apply temporal filtering” 
+- DE-SELECT the option "Add temporal derivative" & “Apply temporal filtering”
+
 ![Figure](images/lab06_image13.png)
 
 4. Click the EV4 tab and make the following selections:
@@ -169,7 +171,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Basic shape: Interaction
 - Between Evs: 1 & 3
 - Make zero: min, min, mean
-- DE-SELECT the option "Add temporal derivative"  
+- DE-SELECT the option "Add temporal derivative"
+  
 ![Figure](images/lab06_image09.png)
 
 
@@ -178,7 +181,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Basic shape: Interaction 
 - Between Evs: 2 & 3 
 - Make zero: min, min,mean, min 
-- DE-SELECT the option "Add temporal derivative"  
+- DE-SELECT the option "Add temporal derivative"
+ 
 ![Figure](images/lab06_image07.png)
 
 ---
@@ -188,14 +192,16 @@ Set **Number of EVs** to **5** and configure as follows:
 Set **10 contrasts**. Fill based on course materials.
 
 ![Contrast matrix screenshot](images/lab06_image06.png)
-Select Done. A window displaying the model should popup. The design matrix should look as follow:
+Select Done. A window displaying the model should pop up. The design matrix should look as follow:
+
 ![Design matrix screenshot](images/lab06_image03.png)
+
 Close the window
----
 
 ## Post-Stats Tab
 
 Leave the default settings. Check that they are the same as in the picture below.  Press Go on the bottom left to run analysis
+
 ![Figure](images/lab06_image11.png)
 
 View output:
@@ -218,12 +224,5 @@ Rerun PPI with a different seed region. How do results differ from the SMA seed 
 
 ### Q4
 Compare MELODIC ICA outputs to GLM post-stats. What stands out?
-
-### Q5 *(New)*
-How does including a **PPI interaction term** change the interpretation of task effects?
-
-### Q6 *(New)*
-What are the advantages and limitations of ICA compared to GLM in task fMRI?
-
 
 ---
