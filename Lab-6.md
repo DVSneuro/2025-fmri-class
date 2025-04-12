@@ -31,10 +31,11 @@ We’ve covered task-dependent activity analyses in previous labs. In this lab w
 
 ```bash
 # Create and enter the folder for the lab
-mkdir ~/Lab_6/; cd Lab_6
+mkdir ~/Lab_6/
+cd Lab_6
 
 # Set brain atlas path
-atlas=/home/student/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz
+atlas=~/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz
 ```
 Open the atlas' associated XML file to find region index that is associated the Juxtapositional Lobule Cortex (formerly Supplementary Motor Cortex).  
 
