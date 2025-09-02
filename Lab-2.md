@@ -130,7 +130,7 @@ mxy_white = mwhite \* (1-(2\*exp(-TR / T1_white)) \* exp(-TE / T2_white)**
 
 T2w images are intended to measure *only* differences between tissues in the rate at which the transverse magnetization decays. Look at Figure 5.8 in your textbook. These data are in BIDS format and so meta data like TR and TE are found in the \"json sidecar files\" 
 
-**Q13. Use `bash gedit ~/ds003745/sub-104/anat/sub-104_T2w.json &` and fill out the following information**
+**Q13. Use `gedit ~/ds003745/sub-104/anat/sub-104_T2w.json &` and fill out the following information**
 TR: \_\_\_\_\_\_\_\_, TE \_\_\_\_\_\_\_
 
 **Q14. Why does using a long TR and a medium TE give us images most sensitive to T2 effects? (i.e., why do those parameters minimize T1 effects?)**
@@ -183,8 +183,7 @@ TE: \_\_\_\_\_\_\_**
 
 **Q12. Is the relative difference in intensity between gray and white matter greater on T1 or T2 images?**
 
-**Q13. Find the TR and TE from the appropriate \_T1w.json sidecar
-file.**
+**Q13. Find the TR and TE from the appropriate \_T1w.json file.**
 
 **TR: \_\_\_\_\_\_\_\_, 
 TE: \_\_\_\_\_\_\_**
