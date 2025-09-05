@@ -1,6 +1,6 @@
-**Lab 4: Running the analysis -- L1 stats**
+# Lab 4: Running the analysis -- L1 stats
 
-**Learning Objectives**
+## Learning Objectives
 
 We\'ve already covered concepts like the General Linear Model, the BOLD
 response, and convolution. Today, you will broadly learn how to perform
@@ -22,62 +22,54 @@ responsible for submitting the assignment. Third, remember that you
 should use the "in-class 'NeuroStars' forum" for asking questions and
 sharing knowledge.*
 
-1.  **Downloading some example data**
+## 1.  Downloading some example data
 
 We will process two data today. Sequence Pilot data and food viewing
 data, both from OpenNeuro. Follow the **code and instructions** below to
 download the data to your virtual machine.
 
 - Make output directories for lab 4
-
-  - **mkdir \~/Lab_4/**
+`mkdir \~/Lab_4/`
 
 - Sequence Pilot Data (event-related design):
 
-![](images/lab4/media/image1.png){width="5.65625in"
-height="2.2059372265966752in"}
+![](images/lab4/media/image1.png)
 
-- **cd \~; datalad clone
-  <https://github.com/OpenNeuroDatasets/ds005085.git>https://github.com/OpenNeuroDatasets/ds005085.git**
+`cd \~; datalad clone https://github.com/OpenNeuroDatasets/ds005085.git`
 
-- **cd ds005085/**
+`cd ds005085/`
 
-- **datalad get sub-10015**
+`datalad get sub-10015`
 
-- **bet sub-10015/anat/sub-10015_T1w.nii.gz
-  sub-10015/anat/sub-10015_T1w_bet.nii.gz \# brain extracting for anat
-  image**
+`bet sub-10015/anat/sub-10015_T1w.nii.gz sub-10015/anat/sub-10015_T1w_bet.nii.gz # brain extracting for anatomical image`
 
 - *\[instruction, NOT CODE\]* Use your Edge browser to download both
   event txt files in the
   [link](https://tuprd-my.sharepoint.com/:f:/g/personal/tug87422_temple_edu/EuNE1WWtgZxIihkk6FsRkqEBfDlfK5f_2JZegJvsgKPMOw)
-  and move them to **\~/ds005085/sub-10015/func/**
+  and move them to `\~/ds005085/sub-10015/func/`
 
-> The data in the sub-10015 folder that we are going to use:
-
-- Anatomical: \~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz
-
-- BOLD:\~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz
+The data in the sub-10015 folder that we are going to use:
+- Neural
+> - Anatomical: \~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz
+> - BOLD:\~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz
 
 - Events:
 
-> \~/ds005085/sub-10015/func/\_guess_allRightButton.txt
->
-> \~/ds005085/sub-10015/func/\_guess_allLeftButton.txt
+> - \~/ds005085/sub-10015/func/\_guess_allRightButton.txt
+> - \~/ds005085/sub-10015/func/\_guess_allLeftButton.txt
 
 - OpenNeuro food-viewing data (block design):
 
-![](images/lab4/media/image2.png){width="5.75in" height="1.625in"}
-
+![](images/lab4/media/image2.png)
 in your terminal:
 
-- **cd \~;**
+`cd \~;`
 
-- **datalad clone https://github.com/OpenNeuroDatasets/ds000157.git**
+`datalad clone https://github.com/OpenNeuroDatasets/ds000157.git`
 
-- **cd ds000157/**
+`cd ds000157/`
 
-- **datalad get sub-01**
+`datalad get sub-01`
 
 <!-- -->
 
@@ -87,9 +79,9 @@ in your terminal:
 We'll quickly work through the sequence pilot data (motor example)
 together, and then you'll work through the OpenNeuro data on your own.
 
-# **2. Running L1 stats in FEAT:**
+## 2. Running L1 stats in FEAT:
 
-# **2.1. Open FEAT:**
+### 2.1. Open FEAT:
 
 1.  Use **Feat &** to call Feat from the terminal.
 
@@ -98,7 +90,7 @@ together, and then you'll work through the OpenNeuro data on your own.
 
 3.  You may want to close 'Progress watcher' under 'Misc' tab
 
-# **2.2. Data tab:**
+### 2.2. Data tab:
 
 > Click the **4D data** button & Navigate to
 > /home/student/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz
@@ -107,11 +99,10 @@ together, and then you'll work through the OpenNeuro data on your own.
 
 4.  Output directory: /home/student/Lab_4/OUTPUT
 
-![](images/lab4/media/image3.png){width="6.5in"
-height="2.9583333333333335in"}![](images/lab4/media/image4.png){width="5.042369860017498in"
-height="4.448536745406824in"}
+![](images/lab4/media/image3.png)
+![](images/lab4/media/image4.png)
 
-# **2.3. Pre-stats tab:**
+### 2.3. Pre-stats tab:
 
 This page allows us to specify the preprocessing that we\'re running.
 We\'ll use the same steps from Lab3. This time, select all given
@@ -119,91 +110,80 @@ options.
 
 5.  Select:
 
-<!-- -->
-
-a.  **MCFLIRT** for Motion correction
-
-b.  **BET** for brain extraction
-
-c.  **5** for Spatial smoothing FWHM (mm)
-
-d.  **Highpass** for Temporal filtering
-
-e.  **Regular down(n-1,n-2,\...,0)** for Slice timing correction: we
+    a.  **MCFLIRT** for Motion correction
+  
+    b.  **BET** for brain extraction
+  
+    c.  **5** for Spatial smoothing FWHM (mm)
+  
+    d.  **Highpass** for Temporal filtering
+  
+    e.  **Regular down(n-1,n-2,\...,0)** for Slice timing correction: we
     need to do slice timing correction here since it is an event-related
     design whose slices were collected in descending order.
 
-# 
+![](images/lab4/media/image5.png)
 
-![](images/lab4/media/image5.png){width="4.979166666666667in"
-height="4.3125in"}
+### 2.4. Registration tab:**
 
-# **2.4. Registration tab:**
-
-11\. Select the **Main structural image option**
-
-a.  Click on the folder icon & navigate to the
+6\. Select the **Main structural image option**
+  a.  Click on the folder icon & navigate to the
     \~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz image.
-
-b.  Select the **Normal search** and **BBR options**
+  b.  Select the **Normal search** and **BBR options**
 
 Leave default options for **Standard space option.**
 
 The default image should be **MNI152_T1_2mm_brain** with linear
 registration options **Normal search** and **12 DOF**.\]
 
-![](images/lab4/media/image6.png){width="5.675597112860892in"
-height="4.886663385826772in"}
+![](images/lab4/media/image6.png)
 
-# **2.5. Stats tab:**
+### 2.5. Stats tab:
 
-12\. Click **Full model setup**: a General Linear Model Window should
+7\. Click **Full model setup**: a General Linear Model Window should
 open
 
-a.  Set the **Number of original EVs** to 2.
-
-b.  Click the **EV1** tab and make the following selections:
-
-    i.  **EV name**: Left
-
-    ii. **Basic shape**: Custom (3 column format)
-
-    iii. **Filename**: Select the folder icon and navigate to:
-         **/home/student/ds005085/sub-10015/func/\_guess_allLeftButton.txt**
-
-    iv. **Convolution**: Double-Gamma HRF
-
-    v.  **DE-SELECT the option** \"Add temporal derivative\"
+  a.  Set the **Number of original EVs** to 2.
+  b.  Click the **EV1** tab and make the following selections:
+  <!-- -->
+   i.  **EV name** : Left 
+   
+   ii. **Basic shape**: Custom (3 column format)
+  
+  iii. **Filename**: Select the folder icon and navigate to:
+         **/home/student/ds005085/sub-10015/func/\_guess_allLeftButton.txt**    
+    
+  iv. **Convolution**: Double-Gamma HRF
+    
+   v.  **DE-SELECT the option** \"Add temporal derivative\"
 
 (Keep the option \"Apply temporal filtering\")
 
-![](images/lab4/media/image7.png){width="3.1463768591426073in"
-height="4.929885170603675in"}
-
-c.  Click the **EV2** tab and make the following selections:
-
-    i.  **EV name**: Right
-
-    ii. **Basic shape**: Custom (3 column format)
-
-    iii. **Filename**: select the folder icon and navigate to
+![](images/lab4/media/image7.png)
+  
+  c.  Click the **EV2** tab and make the following selections:
+   <!-- -->
+  i. **EV name**: Right
+    
+  ii. **Basic shape**: Custom (3 column format)
+  
+  iii. **Filename**: select the folder icon and navigate to
          **/home/student/**ds005085/sub-10015/func/\_guess_allRightButton.txt
-
-    iv. **Convolution**: Double-Gamma HRF
-
-    v.  **DE-SELECT the option** \"Add temporal derivative\"
+         
+  iv. **Convolution**: Double-Gamma HRF
+  
+  v.  **DE-SELECT the option** \"Add temporal derivative\"
 
 (Keep the option Apply temporal filtering)
 
-![](images/lab4/media/image8.png){width="3.0317968066491687in"
-height="4.684772528433946in"}
+![](images/lab4/media/image8.png)
 
-13\. Select the **Contrasts & F-tests** tab
+8\. Select the **Contrasts & F-tests** tab
 
-a.  Increase the number of contrasts to **5** you can use the up arrow
+  a.  Increase the number of contrasts to **5** you can use the up arrow
     key.
 
-b.  For OC1-OC5 reference the table below for the title and EV values.
+  b.  For OC1-OC5 reference the table below for the title and EV values.
     Type into the box for **Title** and use the up and down arrows for
     **EV1** & **EV2**.
 
@@ -211,19 +191,18 @@ b.  For OC1-OC5 reference the table below for the title and EV values.
 
 Select **Done**. A window displaying the model should popup. It should
 look like the following picture. Click the \'**x**\' on the top corner
-to close the window.![Table Description automatically generated with low
-confidence](images/lab4/media/image9.png){width="3.800605861767279in"
-height="3.9108912948381453in"}![](images/lab4/media/image10.png){width="2.4583333333333335in"
-height="4.395833333333333in"}
+to close the window.
+![Table Description automatically generated with low
+confidence](images/lab4/media/image9.png)
+![](images/lab4/media/image10.png)
 
-# **2.6. Post-stats tab:**
+### 2.6. Post-stats tab:
 
 Leave the default settings. Check that they are the same as in the
 picture below.
 
 ![Graphical user interface, text, application, email Description
-automatically generated](images/lab4/media/image11.png){width="5.46875in"
-height="4.0513156167979005in"}
+automatically generated](images/lab4/media/image11.png)
 
 Note "Thresholding" is where cluster-extent and voxel height-based
 correction can be selected.
@@ -232,7 +211,7 @@ Press **Go** on the bottom left. Copy and paste the output log directory
 \"/home/student/Lab_4/OUTPUT_YOUR_TAG).feat/report_log.html" to your
 Edge browser to view report.
 
-# **Viewing the output**
+## 3. Viewing the output
 
 The Feat report should automatically appear so you can track the
 progress of your analysis. This will take about 15 minutes to complete.
@@ -243,28 +222,25 @@ pre-run for this subject together.
 This page tells you exactly what steps have been run. You can review
 this page to look for errors and know on what step the error occurred.
 
-![](images/lab4/media/image12.png){width="6.5in"
-height="3.2777777777777777in"}
+![](images/lab4/media/image12.png)
 
-#  **Registration**
+###  3.1 Registration
 
 This is the same Registration page that we viewed as part of
 pre-processing. We still want to visually check that our registration
 was reasonable and didn\'t \"cut out\" large parts of the brain.
 
-Sequence pilot: ![](images/lab4/media/image13.png){width="6.5in"
-height="3.4375in"}
+Sequence pilot: ![](images/lab4/media/image13.png)
 
-**3.2 Pre-stats**
+### 3.2 Pre-stats
 
 These plots give us a visual representation of the participant\'s
 movement throughout the run in terms of **Rotations**, **Translations**,
 and **Absolute Displacement**.
 
-Sequence pilot: ![](images/lab4/media/image14.png){width="6.5in"
-height="5.197915573053368in"}
+Sequence pilot: ![](images/lab4/media/image14.png)
 
-**3.3. Stats**
+### 3.3. Stats
 
 This page displays the Design Matrix as well as the Covariance & Design
 Efficiency matrices.
@@ -277,28 +253,25 @@ The Covariance Matrix allows us to see how easy or difficult it will be
 to pull apart the effects related to each Independent Variable and an
 estimation of the effect size we will need to see each contrast.
 
-Sequence pilot: ![](images/lab4/media/image15.png){width="3.03125in"
-height="6.5in"}
+Sequence pilot: ![](images/lab4/media/image15.png)
 
-**3.4 Post-Stats**
+### 3.4 Post-Stats
 
 The Post stats page shows us a picture (in radiological view) of which
 areas were significantly active given each specified contrast.
 
 Sequence pilot
 
-![](images/lab4/media/image16.png){width="6.5in"
-height="4.729166666666667in"}
+![](images/lab4/media/image16.png)
 
-![](images/lab4/media/image17.png){width="4.989583333333333in"
-height="4.437849956255468in"}
+![](images/lab4/media/image17.png)
 
 **You've learnt how to run L1 for event-related designs and read
 outputs. Now run L1 for the OpenNeuro food-viewing data (block design)
 on your own. You need to first create three column files (see section 4
 below).**
 
-4.  **Make three column files.**
+## 4.  Make three column files
 
 FSL uses three column tab-delimited text files describing the timing of
 your events. The first column is the onset, the second the duration of
@@ -310,15 +283,14 @@ extract the 3 column files.
 
 in your terminal:
 
-- **cd \~**
+`cd \~`
 
-- **git clone <http://github.com/bids-standard/bidsutils.git>**
+`git clone http://github.com/bids-standard/bidsutils.git`
 
-- **cd bidsutils/BIDSto3col**
+`cd bidsutils/BIDSto3col`
 
-- **bash BIDSto3col.sh
-  \~/ds000157/sub-01/func/sub-01_task-passiveimageviewing_events.tsv
-  sub-01**
+`bash BIDSto3col.sh  \~/ds000157/sub-01/func/sub-01_task-passiveimageviewing_events.tsv
+  sub-01`
 
 you should see three files created:
 
@@ -328,12 +300,12 @@ you should see three files created:
 
 - sub-01_nonfood.txt
 
-![](images/lab4/media/image18.png){width="6.5in" height="0.78125in"}
+![](images/lab4/media/image18.png)
 
 **Copy the three created .txt files from
 /home/student/bidsutils/BIDSto3col/ to \~/ds000157/sub-01/func/**
 
-# Names:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+## Names:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 # Summary of Exercises 
 
