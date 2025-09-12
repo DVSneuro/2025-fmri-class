@@ -89,7 +89,7 @@ In the FEAT window:
 - Choose **Statistics only**
 
 ### 3.2. Configure the Data Tab
-![Selecting input FEAT directories L3]()
+![Selecting input FEAT directories L3](https://github.com/DVSneuro/2025-fmri-class/blob/main/images/lab5_image_04.png)
 
 - Output directory: `/home/student/Lab_5/L3_Cope11`
 - Set input type to: `3D cope images from FEAT directories`
