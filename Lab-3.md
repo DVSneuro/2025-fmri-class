@@ -4,7 +4,7 @@
 
 By now, you should be comfortable
 
-- Logging into your Azure Lab account
+- Interact with NeuroDesk
 - Navigating a **B**rain **I**maging **D**ata **S**tructure (BIDS)
 - Use fslview_deprecated & to view and explore MRI images
 
