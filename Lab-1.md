@@ -68,9 +68,10 @@ Type in the terminal in your Neurodesk interface to download narps (folder ds001
 ``` bash
 datalad install https://github.com/OpenNeuroDatasets/ds001734.git
 cd ds001734
-Datalad get sub-001
+datalad get sub-001
+datalad get ~/ds001734/derivatives/fmriprep/sub-001/anat/sub-001_T1w_preproc.nii.gz
 
-datalad install https://github.com/OpenNeuroDatasets/ds003745.git)
+datalad install https://github.com/OpenNeuroDatasets/ds003745.git
 cd ds003745
 datalad get sub-104
 ```
@@ -80,7 +81,7 @@ Load narps (folder ds001734) and srndna-trustgame (folder ds003745) data
 using the **fsleyes** command 4 times **in the terminal you loaded fsl module**. 
 
 ``` bash
-fsleyes ~/ds001734/sub-001/anat/sub-001_T1w.nii.gz &
+fsleyes ~/ds001734/derivatives/fmriprep/sub-001/anat/sub-001_T1w_preproc.nii.gz &
 
 fsleyes ~/ds001734/sub-001/func/sub-001_task-MGT_run-01_bold.nii.gz &
 
@@ -128,9 +129,9 @@ concept you'll learn more about later in the course) T1 template
 embedded in the image viewer.
 
 ``` bash
-fsleyes /opt/fsl-6.0.7.14/data/standard/MNI152_T1_0.5mm.nii.gz &
+fsleyes /opt/fsl-6.0.7.16/data/standard/MNI152_T1_0.5mm.nii.gz &
 ```
-PLACEHOLDER: swap image2
+
 ![Figure](images/lab1/image2.png)
 
 You will be using fsleyes frequently in future labs, so we will begin by
@@ -199,8 +200,7 @@ fine measurement. Here, we estimate the volume of the brain's using
 *fslstats*.
 
 ``` bash
-cd ~/ds001734/sub-001/anat/
-fslstats sub-001_T1w.nii.gz -V
+fslstats ~/ds001734/derivatives/fmriprep/sub-001/anat/sub-001_T1w_preproc.nii.gz -V
 ```
 
 <u>Tip</u>: almost all commands (or tools) in FSL will show you
@@ -238,17 +238,25 @@ making a note of what values are at the transition location.
 Second, you can find the needed values by creating a histogram. fsleyes
 will create a histogram for you with the **View→ Image Histogram.**
 
+
+<img width="1655" height="968" alt="image" src="https://github.com/user-attachments/assets/8a0cbe41-e60d-42cb-9a24-2e69a4eb11c3" />
+
+
 You can likely see a plot that has several peaks. The very large peak
 near zero reflects the many voxels in the air around the head that have
-minimal signal. To the right will be a distribution with two much
+minimal signal (omitted in the screenshot by setting lower bound to 50).
+To the right will be a distribution with two much
 smaller peaks; these correspond to gray and white matter. Note that
 there are many voxels that have intermediate values between these peaks;
 these correspond to voxels that actually contain both gray and white
 matter (i.e., those on the boundary between them). You can estimate the
 cut-off value by finding the midpoint between these peaks.
 
-You can view change the min/max intensity to only look at white matter
-**(click on 'options', change "set intensity range")**
+You can change the min/max intensity to only look at white matter
+**adjust the range of the minimum and maximum value to be displayed to the range of white matter (around 370-430 in this T1 weighted image)**
+
+<img width="1010" height="971" alt="image" src="https://github.com/user-attachments/assets/f2fb9436-c0ba-488a-a04a-3a79ad739788" />
+
 
 Note that this cut-off value depends upon many factors, including
 scanners, subjects, pulse sequences, and reconstruction approaches. What
@@ -256,19 +264,15 @@ is important is not the absolute number, but the relative difference
 between the tissues (i.e., their contrast).
 
 
-PLACEHOLDER
-Lab 1 sub-001's data is dark : noise & dark? Karen has better file but that need onedrive link?
-swap IMAGE 4 not showing properly cuz file is problematic
-![Figure](images/lab1/image4.png)
 
 
 ## 6. Identifying Anatomical Locations
 
-Our final exercise will use identify key anatomical locations within the
+Our final exercise will be identifying key anatomical locations within the
 standardized structural MRI image you opened (**MNI152_T1_0.5mm.nii.gz**).
 When doing fMRI studies, it is important to gain a working knowledge of
-brain anatomy, for several reasons. Researchers should be able to
-accurately and consistently identify areas of activity, to best develop
+brain anatomy for several reasons. Researchers should be able to
+accurately and consistently identify areas of activity to best develop
 and test brain-based hypotheses. Without a good knowledge of anatomy, it
 is difficult to read the neuroimaging literature or to converse with
 other investigators about experimental data. Nevertheless, learning
@@ -284,25 +288,20 @@ slices as needed and click on the desired location to get its
 coordinates. We recommend using the "3 Orthogonal Planes" view, for best
 visualization of regions.
 
-To make this easier go to **Tools→ toolbars→ atlas tools.**
+To make this easier go to **Setting→ Ortho View 1→ Check "Atlases"**
 
-
-placeholder: swap image 5
-![Figure](images/lab1/image5.png)
+<img width="910" height="707" alt="image" src="https://github.com/user-attachments/assets/602c9392-02f2-4641-a716-fc2088287576" />
 
 When the atlas window appears click
 
 **Atlases -> Atlas information... → Select appropriate atlas (i.e., Harvard-Oxford
-Cortical atlas) → Select Both options (Locate selected structure & Preview
-Selected structure) → click the name of the desired structure （e.g.,
-Frontal Pole)**
-
-Click on "Show/Hide" next to a structure will give the preview of the structure. 
+Cortical atlas) → Click on "Show/Hide" next to a structure will give the preview of the structure.**
 
 The voxel marked by the cross has been ID'd as belonging to the
 indicated area in a larger percentage of
 individuals.
-![Figure](images/lab1/image6.png)
+<img width="913" height="690" alt="image" src="https://github.com/user-attachments/assets/3fdca10e-e26b-4dba-bded-004ff525314b" />
+
 
 ## Summary of Exercises 
 
