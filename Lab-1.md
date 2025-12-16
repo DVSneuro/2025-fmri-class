@@ -237,6 +237,7 @@ making a note of what values are at the transition location.
 
 Second, you can find the needed values by creating a histogram. fsleyes
 will create a histogram for you with the **View→ Image Histogram.**
+Click on the wrench button to adjust display settings. The screenshot shows the suggested setting for display purposes. 
 
 
 <img width="1655" height="968" alt="image" src="https://github.com/user-attachments/assets/8a0cbe41-e60d-42cb-9a24-2e69a4eb11c3" />
@@ -244,8 +245,7 @@ will create a histogram for you with the **View→ Image Histogram.**
 
 You can likely see a plot that has several peaks. The very large peak
 near zero reflects the many voxels in the air around the head that have
-minimal signal (omitted in the screenshot by setting lower bound to 50).
-To the right will be a distribution with two much
+minimal signal (omitted in the histogram setting). To the right will be a distribution with two much
 smaller peaks; these correspond to gray and white matter. Note that
 there are many voxels that have intermediate values between these peaks;
 these correspond to voxels that actually contain both gray and white
