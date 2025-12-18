@@ -63,7 +63,7 @@ display three-dimensional or four-dimensional data. It also allows
 overlaying of one image on top of another[^1].
 
 ## 1.1 Loading the MRI data
-Type in the terminal in your Neurodesk interface to download narps (folder ds001734) and srndna-trustgame (folder ds003745) data. 
+Type in the **base terminal** in your Neurodesk interface to download narps (folder ds001734) and srndna-trustgame (folder ds003745) data. 
 
 ``` bash
 datalad install https://github.com/OpenNeuroDatasets/ds001734.git
@@ -74,6 +74,7 @@ datalad get ~/ds001734/derivatives/fmriprep/sub-001/anat/sub-001_T1w_preproc.nii
 datalad install https://github.com/OpenNeuroDatasets/ds003745.git
 cd ds003745
 datalad get sub-104
+datalad get sub-137
 ```
 
 
@@ -101,7 +102,7 @@ Alternatively:
 
 - Click in the four windows seperately for sub-001 to navigate through the file system to the nii.gz file you are looking for
 
-You can also take a look at sub-137:
+You can also take a look at sub-137 in your **fsl terminal**:
 ``` bash
 fsleyes ~/ds003745/sub-137/anat/sub-137_T1w.nii.gz &
 fsleyes ~/ds003745/sub-137/anat/sub-137_T2w.nii.gz &
@@ -126,7 +127,7 @@ and/or instructor will be available for help as needed. \*\***
 
 Now we are going to open a standardized (or "normalized", which is a
 concept you'll learn more about later in the course) T1 template
-embedded in the image viewer.
+embedded in the image viewer in your *fsl terminal*.
 
 ``` bash
 fsleyes /opt/fsl-6.0.7.16/data/standard/MNI152_T1_0.5mm.nii.gz &
@@ -197,7 +198,7 @@ studying hippocampal changes with a given disorder may use MRI to
 measure its volume in patient and control groups. Anatomical images can
 have spatial resolution of about 1mm, so they can be very useful for
 fine measurement. Here, we estimate the volume of the brain's using
-*fslstats*.
+*fslstats* in your **fsl terminal**.
 
 ``` bash
 fslstats ~/ds001734/derivatives/fmriprep/sub-001/anat/sub-001_T1w_preproc.nii.gz -V
