@@ -249,7 +249,7 @@ structural image?**
 ). We have only updated the data to match what is on your Virtual
 Machines.**
 
-## 3.1 fslstats**
+### 3.1 fslstats
 
 *fslstats* is a general tool for calculating various values/statistics
 from the image intensities. It is quite flexible but we will just
@@ -280,7 +280,7 @@ The second number is a more meaningful mean of the actual within-brain
 intensities - view the image and click around inside the brain to see
 this.
 
-**3.2 fslsplit**
+### 3.2 fslsplit
 
 In this example we will look at a way of splitting up the 4D input image
 into its individual 3D images, or volumes, (vol0000, vol0001,
@@ -301,7 +301,7 @@ just ls, as we will see below). You\'ll see that the counting of the
 images starts with 0, and that the number of images should match the
 number of timepoints in the original 4D image.
 
-**3.3 fslmaths**
+### 3.3 fslmaths
 
 `fslmaths` is a very general image calculator and can be used to perform a
 great variety of manipulations of images. See the (long) usage by just
