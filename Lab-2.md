@@ -1,4 +1,3 @@
-ls
 # Lab 2: Understanding Contrast 
 
 ***This week\'s exercises will illustrate the principle of* contrast
@@ -24,15 +23,19 @@ the \".json\" files in that same directory.
 Load all four datasets to fsleyes in *FSL terminal*
 **fsleyes** command.
 
-`fsleyes ~/ds003745/sub-104/anat/sub-104_T1w.nii.gz &
-fsleyes ~/ds003745/sub-104/anat/sub-104_T2w.nii.gz &`
+```
+fsleyes ~/ds003745/sub-104/anat/sub-104_T1w.nii.gz &
+fsleyes ~/ds003745/sub-104/anat/sub-104_T2w.nii.gz &
+```
 
 You can also take a look at sub-137. Take some time to notice any
 anatomical differences. One is significantly older than the other. Can
 you guess which is older/younger?
 
-`fsleyes ~/ds003745/sub-137/anat/sub-137_T1w.nii.gz &
- fsleyes ~/ds003745/sub-137/anat/sub-137_T2w.nii.gz &`
+```
+fsleyes ~/ds003745/sub-137/anat/sub-137_T1w.nii.gz & 
+fsleyes ~/ds003745/sub-137/anat/sub-137_T2w.nii.gz &
+```
 
 ### 1.2 Display the MRI data
 
@@ -44,9 +47,9 @@ the data?**
 **Q2. What is different about the data?**
 
 
-**\*\* At this point, you should begin working on your own.\*\***
+**At this point, you should begin working on your own.**
 
-**\*\* The TAs or instructor will be available for help as needed.\*\***
+**The TAs or instructor will be available for help as needed.**
 
 ## Exercise 2: Quantifying the datasets
 
