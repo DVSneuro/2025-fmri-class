@@ -1,3 +1,4 @@
+ls
 # Lab 2: Understanding Contrast 
 
 ***This week\'s exercises will illustrate the principle of* contrast
@@ -7,8 +8,8 @@ The text (Chapter 5) and lecture discussed the idea that MR images can
 be acquired with different forms of contrast. You will learn about how
 specific pulse sequence values relate to specific types of images.
 
-**This exercise uses anatomical images within the Lab_2 directory
-in `~/ds003745/sub-104/anat` and
+**This exercise uses anatomical images downloaded in the last lab within your Neurodesk directory
+`~/ds003745/sub-104/anat` and
 `~/ds003745/sub-137/anat`** 
 This dataset consists of four
 high-resolution anatomical volumes. The T1w and T2w images were acquired
@@ -20,18 +21,18 @@ the \".json\" files in that same directory.
 ## Exercise 1: Loading and Analyzing the data
 ### 1.1 Loading the MRI data
 
-Load all four datasets into variables in MATLAB using the
-**fslview_deprecated** command.
+Load all four datasets to fsleyes in *FSL terminal*
+**fsleyes** command.
 
-`fslview_deprecated ~/ds003745/sub-104/anat/sub-104_T1w.nii.gz &
- fslview_deprecated ~/ds003745/sub-104/anat/sub-104_T2w.nii.gz &`
+`fsleyes ~/ds003745/sub-104/anat/sub-104_T1w.nii.gz &
+fsleyes ~/ds003745/sub-104/anat/sub-104_T2w.nii.gz &`
 
 You can also take a look at sub-137. Take some time to notice any
 anatomical differences. One is significantly older than the other. Can
 you guess which is older/younger?
 
-`fslview_deprecated ~/ds003745/sub-137/anat/sub-137_T1w.nii.gz &
- fslview_deprecated ~/ds003745/sub-137/anat/sub-137_T2w.nii.gz &`
+`fsleyes ~/ds003745/sub-137/anat/sub-137_T1w.nii.gz &
+ fsleyes ~/ds003745/sub-137/anat/sub-137_T2w.nii.gz &`
 
 ### 1.2 Display the MRI data
 
@@ -98,7 +99,7 @@ T1 images are intended to measure *only* differences between tissues in the rate
 
 These data are in BIDS format and so meta data like TR and TE are found in the \"json sidecar files\" 
 
-**Q9. Use `gedit ~/ds003745/sub-104/anat/sub-104_T1w.json &` and fill out the following information**
+**Q9. Use `gedit ~/ds003745/sub-104/anat/sub-104_T1w.json &` *based terminal* and fill out the following information**
 
 TR: \_\_\_\_\_\_\_\_, TE \_\_\_\_\_\_\_
 
@@ -130,7 +131,7 @@ mxy_white = mwhite \* (1-(2\*exp(-TR / T1_white)) \* exp(-TE / T2_white)**
 
 T2w images are intended to measure *only* differences between tissues in the rate at which the transverse magnetization decays. Look at Figure 5.8 in your textbook. These data are in BIDS format and so meta data like TR and TE are found in the \"json sidecar files\" 
 
-**Q13. Use `gedit ~/ds003745/sub-104/anat/sub-104_T2w.json &` and fill out the following information**
+**Q13. Use `gedit ~/ds003745/sub-104/anat/sub-104_T2w.json &` in a *base terminal* and fill out the following information**
 TR: \_\_\_\_\_\_\_\_, TE \_\_\_\_\_\_\_
 
 **Q14. Why does using a long TR and a medium TE give us images most sensitive to T2 effects? (i.e., why do those parameters minimize T1 effects?)**
