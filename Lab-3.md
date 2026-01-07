@@ -6,7 +6,7 @@ By now, you should be comfortable
 
 - Interact with NeuroDesk
 - Navigating a **B**rain **I**maging **D**ata **S**tructure (BIDS)
-- Use fslview_deprecated & to view and explore MRI images
+- Use `fsleyes &` to view and explore MRI images
 
 This week's exercises will let you explore the FMRI Expert Analysis Tool
 (FEAT) to learn steps to preprocess neuroimaging data. By the end of the
@@ -21,8 +21,7 @@ lab, you will be expected to:
   - Intensity Normalization
   - Temporal filtering
 
-You should follow the steps on this lab sheet carefully and answer the
-questions.
+To do so, you are going to perform each preprocessing step individually and generate and compare various versions of the preprocessed output. You should follow the steps on this lab sheet carefully to answer the questions.
 
 **\*\* At this point, you should begin working on your own. \*\***
 
@@ -40,10 +39,10 @@ Open a terminal and make a directory for all your output for this lab:
 mkdir -p ~/Lab_3/OUTPUT
 ```
 
-To open feat type the fsl command `fsl &` into the terminal and click **FEAT FMRI analysis**
+To open feat type the fsl command `fsl &` into the *fsl terminal and click **FEAT FMRI analysis**
 
 
-or type the feat command into the terminal (note that commands are case
+or type the feat command into the *fsl terminal (note that commands are case
 sensitive for "F")
 `Feat &`
 
@@ -67,11 +66,11 @@ generated](images/lab3/media/image4.png)
 only? Why might you want to separate preprocessing from other aspects of
 analyses?**
 
-Go to the **Misc** tab let's **& turn on Progress Watcher**. Note that
+Go to the **Misc** tab let's **& turn off Progress Watcher**. Note that
 the stony-grey box is unselected, and the yellow box is selected
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](images/lab3/media/image5.png)
+<img width="518" height="418" alt="image" src="https://github.com/user-attachments/assets/64247987-0244-49f8-811d-67a39d26cc10" />
+
 
 **Balloon help**: is a tool that will explain the various options
 available to you by hovering your mouse over it. Try it with a few
@@ -86,11 +85,12 @@ help)**
 ## **2.1 Selecting your Data**
 
 **Click "Data" tab and change the following settings**
-![](images/lab3/media/image3.png)
+<img width="509" height="406" alt="image" src="https://github.com/user-attachments/assets/a576d325-de15-4c9b-8d8c-1400c94c0a9c" />
+
 
 - Number of Inputs: 1
 - Select 4D data:
-  `~/ds003745//sub-104/func/sub-104_task-trust_run-01_bold.nii.gz`
+  `~/ds003745/sub-104/func/sub-104_task-trust_run-01_bold.nii.gz`
 - Output directory: make sure you are outputting to the directory
   `~/Lab_3/OUTPUT` you have created
 
@@ -100,12 +100,12 @@ Total Volumes and TR for you. What are they for this file?**
 
 ## 2.2 Pre-Stats
 
-### 2.2.1 Brain Extraction/ Skull Stripping
+### 2.2.1 Brain Extraction/Skull Stripping
 
 Most FSL programs can be run from the command-line without using a GUI,
 by typing fully lowercase names (e.g., bet). Many programs also have a
 GUI, which can be started via the fsl mini-GUI (type fsl) or by typing a
-capitalized version of the command name (e.g. Bet).
+capitalized version of the command name (e.g. `Bet &` in an *fsl terminal*).
 
 (<https://open.win.ox.ac.uk/pages/fslcourse/practicals/intro2/index.html>
 )
@@ -115,9 +115,13 @@ right-hand file selector button rather than typing this in by hand as it
 minimizes the chances of errors. Turn on various optional outputs (brain
 extracted image, binary brain mask and skull surface image - see
 Advanced Options tab) but leave the other settings as they are. Note
-that the GUI suggests the default output name structural_brain.
+that the GUI suggests the default output name originalfilename_brain.
 
-When done click on Go to run BET and then exit the GUI once it\'s done.
+
+<img width="594" height="413" alt="image" src="https://github.com/user-attachments/assets/4cae0f94-e2e0-4c2a-8ae2-366fe8c8399a" />
+
+
+When done click on *Go* to run BET and then exit the GUI once it\'s done.
 You will see that when you pressed *Go* the actual command carried out was
 printed in the terminal; many of the FSL GUIs will do this, in order to
 help you see what\'s actually going on. Also, in the terminal you will
@@ -126,15 +130,15 @@ return to get a visible prompt back after seeing \"Finished\").
 
 BET can also be run from the command line. In later steps we will want a
 skull stripped anatomical. Use the following command to create a skull
-stripped anatomical.
+stripped anatomical image.
 
-`bet ~/ds003745/sub-138/anat/sub-138_T1w.nii.gz ~/ds003745/sub-138/anat/sub-138_T1w_brain`
+`bet ~/ds003745/sub-137/anat/sub-137_T1w.nii.gz ~/ds003745/sub-137/anat/sub-137_T1w_brain`
 
-**Under pre-stats tab:**
+**Performing skull-stripping for functional image as the only preprocessing step in Feat pre-stats tab:**
 Uncheck all options except for BET brain extraction and hit go
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](images/lab3/media/image6.png)
+<img width="507" height="406" alt="image" src="https://github.com/user-attachments/assets/5287426b-bd05-4136-8c07-ae8ac6209347" />
+
 
 Then make sure you choose the input file under the registration tab
 before hitting go.
@@ -144,9 +148,9 @@ Feat creates a lot of output and stores it in a directory with your
 output name and .feat at the end. The data we want will be the
 filtered_func_data.nii.gz.
 
-**Q4. Use fslview_deprecated & to open the original func data
+**Q4. Use `fsleyes &` to open the original func data
 (sub-104_task-trust_run-01_bold.nii.gz) and leave it open for later use,
-and open a separate fslview_deprecated window for the
+and open a separate fsleyes window for the
 filtered_func_data.nii.gz** (all the outputs from individual steps of
 preprocessing are named filtered_func_data.nii.gz, just in different job
 folders) **from BET. Compare the before and after data. What did
@@ -155,23 +159,25 @@ this step do and why might that process be important?**
 ### 2.2.2 Motion Correction: 
 
 Return to the Feat GUI. Under the Data tab, change the output name so
-that you will be able to tell it apart from just the motion corrected
+that you will be able to tell it apart from just the skull-striped
 data.
 
 ![A screenshot of a computer AI-generated content may be
 incorrect.](images/lab3/media/image7.png)
 
-Uncheck all options except for Motion Correction MCFLIRT and hit go. ![A
-screenshot of a computer AI-generated content may be
-incorrect.](images/lab3/media/image8.png)
+Uncheck all options **except** for Motion Correction MCFLIRT and hit go. 
+
+<img width="508" height="411" alt="image" src="https://github.com/user-attachments/assets/7c45890e-3786-4363-a96a-389d55d9a750" />
+
+
 
 After hitting go, wait shortly for the output to generate, then again,
 look in the new feat directory and look at the filtered_func_data
 
-**Q5. Use fslview_deprecated &to compare the before and after data from
+**Q5. Use fsleyes & to compare the before and after data from
 MCFLIRT. (HINT scroll through the volumes or press the movie button).
 What did this step do and why might that be important? Did it do a good
-job? Why do you think so? (HINT: compare sub-104 and sub-138 run-03)?**
+job? Why do you think so? (HINT: compare sub-104 and sub-137 run-03)?**
 
 ### 2.2.3 Smoothing
 
@@ -179,12 +185,12 @@ Create a new output under data tab before named something like
 2mm_smoothing. Keeping other setting inactivated and select a smoothing
 kernel under pre-stats tab of 2 and hit go.
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](images/lab3/media/image9.png)
+<img width="506" height="408" alt="image" src="https://github.com/user-attachments/assets/38310092-835e-4c60-a025-120a15803f0d" />
 
-Do similar steps for 5mm and 15 mm
 
-**Q6. Use fslview_deprecated & to compare the before and after data
+Do the same step using 5mm and 15 mm smoothing kernels.
+
+**Q6. Use fsleyes & to compare the before and after data
 (**filtered_func_data.nii.gz**) from smoothing. Describe the differences
 you see for the different smoothing kernels.**
 
@@ -194,10 +200,10 @@ Go back to pre-stats and deselect everything but highpass under temporal
 filtering, then rename the output feat folder name again under the Data
 tab.
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](images/lab3/media/image10.png)
+<img width="505" height="406" alt="image" src="https://github.com/user-attachments/assets/09989b21-f4b4-470a-9ca7-cfed9a6e6def" />
 
-**Q7. Use fslview_deprecated & to compare the before and after data
+
+**Q7. Use fsleyes & to compare the before and after data
 (filtered_func_data.nii.gz) from filtering. (HINT: Use the time
 series view). Describe how this preprocessing step changed your data.**
 
@@ -208,20 +214,23 @@ next tab that says Registration. For main structural select the skull
 stripped anatomical that we created earlier with bet. For the
 **standard** make sure it says MNI152_T1_2mm_brain.
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](images/lab3/media/image11.png)
+<img width="505" height="407" alt="image" src="https://github.com/user-attachments/assets/c453520a-6333-4f1d-b9a1-f4bb04fb67b8" />
+
 The output html page provided in Feat
 should show how good we did with Registration. Click Go.
 
-You output this time will include a report in the folder. Open edge and
-enter "/home/student/Lab_3/YOURNAMEFORIT.feat/report_reg.html"
+You output this time will include a report in the folder. Open your Neurodesk Firefox and
+enter 
 
-![A collage of images of a brain AI-generated content may be
-incorrect.](images/lab3/media/image12.png)
+"/home/student/Lab_3/YOURNAMEFORIT.feat/report_reg.html"
+
+<img width="958" height="722" alt="image" src="https://github.com/user-attachments/assets/b11bcd2a-dd73-4d0d-9e9b-0878133811ab" />
+
 
 The registration output displays a red outline on top a greyscale image
 of another brain. The first shows an average image of fMRI data as the
-underlay, and the MNI brain as the red lines.
+underlay, and the MNI brain as the red lines. You can see that both the functional 
+and structural images have some skull leftover with the default 0.5 as the fractional intensity threshold in BET.
 
 The outline should trace the boundary of the greyscale image. Also check
 whether ventricles and other internal structures are aligned
@@ -249,14 +258,16 @@ possible options and brief description of the output. Any combination
 and order of options is possible.
 
 Run 
-`cd ~/ds003745/sub-104/anat/
- fslstats sub-104_T1w.nii.gz -R -r`
+```
+cd ~/ds003745/sub-104/anat/
+fslstats sub-104_T1w.nii.gz -R -r
+```
 
 The first pair of numbers (specified by `-R`) is the absolute range of the
 data - i.e., the min and max intensities. The second pair (`-r`) is the
 \"robust range\" - i.e. the min and max if the outer tails of the
 intensity distribution are ignored (this is useful if the data contains
-outliers). View the image histogram in fslview_deprecated to see how all
+outliers). View the image histogram in fsleyes to see how all
 these numbers relate to the histogram.
 
 Run
@@ -275,8 +286,10 @@ In this example we will look at a way of splitting up the 4D input image
 into its individual 3D images, or volumes, (vol0000, vol0001,
 vol0002, etc.):
 
-`cd ~/ds003745/sub-104/func
-fslsplit sub-104_task-trust_run-01_bold.nii.gz`
+```
+cd ~/ds003745/sub-104/func
+fslsplit sub-104_task-trust_run-01_bold.nii.gz
+```
 
 To list these new files, do:
 
@@ -304,14 +317,14 @@ quality assessment). Do this by running:
 `fslmaths vol0121 -sub vol0077 imdiff`
 
 and view the output (the final argument in that command) in
-Fslview_deprecated. Now calculate this as a percent difference image by
+fsleyes. Now calculate this as a percent difference image by
 running:
 
 `fslmaths imdiff -div vol0121 -mul 100 imdiffpercent`
 
 This means: \"take the difference image, divide by the first of the
 original images (voxelwise), multiply by 100, and output\". View the
-output in Fslview_deprecated, and then use fslstats to calculate its
+output in fsleyes, and then use fslstats to calculate its
 absolute and robust range - see that the robust range is quite small,
 with most change showing up as motion effects round the edge of the
 brain.
@@ -338,20 +351,20 @@ help)
 Q3. After Selecting the appropriate 4D Bold Scan FEAT detects the Total
 Volumes and TR for you. What are they?
 
-Q4. Use fslview_deprecated & to compare the before and after data from
+Q4. Use fsleyes & to compare the before and after data from
 MCFLIRT. (HINT scroll through the volumes or press the movie button).
 What did this step do & why might that be important? Did it do a good
 job? Why do you think so?
 
-Q5. Use fslview_deprecated & to compare the before and after data
+Q5. Use fsleyes & to compare the before and after data
 (filtered_func_data.nii.gz) from BET. What did this step do & why might
 that be important? Did it do a good job? Why do you think so?
 
-Q6. Use fslview_deprecated & to compare the before and after data from
+Q6. Use fsleyes & to compare the before and after data from
 smoothing. Describe the differences you see for the different smoothing
 kernels.
 
-Q7. Use fslview_deprecated & to compare the before and after data from
+Q7. Use fsleyes & to compare the before and after data from
 filtering. (HINT: Use the time series view). Describe how this
 preprocessing step changed your data.
 
