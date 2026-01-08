@@ -28,49 +28,48 @@ We will process two data today. Sequence Pilot data and food viewing
 data, both from OpenNeuro. Follow the **code and instructions** below to
 download the data to your virtual machine.
 
-- Make output directories for lab 4
-`mkdir \~/Lab_4/`
+- Make output directories for lab 4 in either kind of terminal
+`mkdir ~/Lab_4/`
 
-- Sequence Pilot Data (event-related design):
+### 1.1 Obtain sequence Pilot Data (event-related design): 
 
 ![](images/lab4/media/image1.png)
 
-`cd \~; datalad clone https://github.com/OpenNeuroDatasets/ds005085.git`
+Enter this in your based terminal:
+```
+cd ~; datalad clone https://github.com/OpenNeuroDatasets/ds005085.git;
+cd ds005085/;
+datalad get sub-10015;
+```
 
-`cd ds005085/`
+Then switch to you fsl terminal:
+`bet ~/ds005085/sub-10015/anat/sub-10015_T1w.nii.gz ~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz # brain extracting for anatomical image`
 
-`datalad get sub-10015`
-
-`bet sub-10015/anat/sub-10015_T1w.nii.gz sub-10015/anat/sub-10015_T1w_bet.nii.gz # brain extracting for anatomical image`
-
-- *\[instruction, NOT CODE\]* Use your Edge browser to download both
-  event txt files in the
-  [link](https://tuprd-my.sharepoint.com/:f:/g/personal/tug87422_temple_edu/EuNE1WWtgZxIihkk6FsRkqEBfDlfK5f_2JZegJvsgKPMOw)
-  and move them to `\~/ds005085/sub-10015/func/`
+- Download the txt file of [left button press](https://github.com/DVSneuro/2025-fmri-class/blob/main/Utilities/_guess_allLeftButton.txt)
+  and [right button press](https://github.com/DVSneuro/2025-fmri-class/blob/main/Utilities/_guess_allRightButton.txt) on your Neurodesk virtual machine
+  and move them to `~/ds005085/sub-10015/func/`
 
 The data in the sub-10015 folder that we are going to use:
 - Neural
-> - Anatomical: \~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz
-> - BOLD:\~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz
+> - Anatomical: ~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz
+> - BOLD:~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz
 
 - Events:
 
-> - \~/ds005085/sub-10015/func/\_guess_allRightButton.txt
-> - \~/ds005085/sub-10015/func/\_guess_allLeftButton.txt
+> - ~/ds005085/sub-10015/func/_guess_allRightButton.txt
+> - ~/ds005085/sub-10015/func/_guess_allLeftButton.txt
 
-- OpenNeuro food-viewing data (block design):
+### Obtain OpenNeuro food-viewing data (block design):
 
 ![](images/lab4/media/image2.png)
 in your terminal:
 
-`cd \~;`
-
-`datalad clone https://github.com/OpenNeuroDatasets/ds000157.git`
-
-`cd ds000157/`
-
-`datalad get sub-01`
-
+```
+cd ~;
+datalad clone https://github.com/OpenNeuroDatasets/ds000157.git;
+cd ds000157/;
+datalad get sub-01;
+```
 <!-- -->
 
 - You also need to download the BIDSto3col.sh file to make three column
@@ -83,24 +82,21 @@ together, and then you'll work through the OpenNeuro data on your own.
 
 ### 2.1. Open FEAT:
 
-1.  Use **Feat &** to call Feat from the terminal.
+1.  Use `Feat &` to call Feat from the terminal.
 
-2.  Keep the default settings of **First-level analysis and Full
+2.  Keep the default settings of **First-level analysis** and **Full
     analysis** are selected at the top of the Feat window.
 
 3.  You may want to close 'Progress watcher' under 'Misc' tab
 
 ### 2.2. Data tab:
 
-> Click the **4D data** button & Navigate to
-> /home/student/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz
->
-> This is the BOLD data that we are analyzing.
+- Click the **4D data** button & Navigate to `~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz`. This is the BOLD data that we are analyzing.
+- Output directory: `～/Lab_4/OUTPUT`
 
-4.  Output directory: /home/student/Lab_4/OUTPUT
+<img width="811" height="493" alt="image" src="https://github.com/user-attachments/assets/6e377c15-d1c9-4444-9226-e5d08d8c1409" />
+<img width="506" height="405" alt="image" src="https://github.com/user-attachments/assets/56b099ee-4ea6-434e-ae67-79880c90c6ce" />
 
-![](images/lab4/media/image3.png)
-![](images/lab4/media/image4.png)
 
 ### 2.3. Pre-stats tab:
 
@@ -122,21 +118,22 @@ options.
     need to do slice timing correction here since it is an event-related
     design whose slices were collected in descending order.
 
-![](images/lab4/media/image5.png)
+<img width="507" height="407" alt="image" src="https://github.com/user-attachments/assets/0f1df6d7-161e-492f-b0d8-be3649666328" />
 
-### 2.4. Registration tab:**
 
-6\. Select the **Main structural image option**
+### 2.4. Registration tab:
+
+6. Select the **Main structural image option**
   a.  Click on the folder icon & navigate to the
-    \~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz image.
+    ~/ds005085/sub-10015/anat/sub-10015_T1w_bet.nii.gz image.
   b.  Select the **Normal search** and **BBR options**
 
 Leave default options for **Standard space option.**
 
 The default image should be **MNI152_T1_2mm_brain** with linear
-registration options **Normal search** and **12 DOF**.\]
+registration options **Normal search** and **12 DOF**.
 
-![](images/lab4/media/image6.png)
+<img width="505" height="403" alt="image" src="https://github.com/user-attachments/assets/48e63d09-61c6-4656-8f08-16f24c87f30e" />
 
 ### 2.5. Stats tab:
 
@@ -151,7 +148,7 @@ open
    ii. **Basic shape**: Custom (3 column format)
   
   iii. **Filename**: Select the folder icon and navigate to:
-         **/home/student/ds005085/sub-10015/func/\_guess_allLeftButton.txt**    
+         `~/ds005085/sub-10015/func/_guess_allLeftButton.txt`  
     
   iv. **Convolution**: Double-Gamma HRF
     
@@ -159,7 +156,8 @@ open
 
 (Keep the option \"Apply temporal filtering\")
 
-![](images/lab4/media/image7.png)
+<img width="381" height="415" alt="image" src="https://github.com/user-attachments/assets/2ab9da72-94f7-4b7c-bd4f-0911adb4ad82" />
+
   
   c.  Click the **EV2** tab and make the following selections:
    <!-- -->
@@ -168,7 +166,7 @@ open
   ii. **Basic shape**: Custom (3 column format)
   
   iii. **Filename**: select the folder icon and navigate to
-         **/home/student/**ds005085/sub-10015/func/\_guess_allRightButton.txt
+         `~/ds005085/sub-10015/func/_guess_allRightButton.txt`
          
   iv. **Convolution**: Double-Gamma HRF
   
@@ -176,7 +174,7 @@ open
 
 (Keep the option Apply temporal filtering)
 
-![](images/lab4/media/image8.png)
+<img width="381" height="422" alt="image" src="https://github.com/user-attachments/assets/388bfa07-76de-40f3-bbe1-aa3c8f28dd4c" />
 
 8\. Select the **Contrasts & F-tests** tab
 
@@ -192,6 +190,7 @@ open
 Select **Done**. A window displaying the model should popup. It should
 look like the following picture. Click the \'**x**\' on the top corner
 to close the window.
+
 ![Table Description automatically generated with low
 confidence](images/lab4/media/image9.png)
 ![](images/lab4/media/image10.png)
@@ -201,14 +200,14 @@ confidence](images/lab4/media/image9.png)
 Leave the default settings. Check that they are the same as in the
 picture below.
 
-![Graphical user interface, text, application, email Description
-automatically generated](images/lab4/media/image11.png)
+<img width="508" height="411" alt="image" src="https://github.com/user-attachments/assets/5c70f89b-a7b6-455a-b0f9-05d59c49fe99" />
+
 
 Note "Thresholding" is where cluster-extent and voxel height-based
 correction can be selected.
 
 Press **Go** on the bottom left. Copy and paste the output log directory
-\"/home/student/Lab_4/OUTPUT_YOUR_TAG).feat/report_log.html" to your
+`~/Lab_4/OUTPUT_YOUR_TAG.feat/report_log.html` to your
 Edge browser to view report.
 
 ## 3. Viewing the output
@@ -281,16 +280,14 @@ this later). You need one file for each condition of each run for each
 subject before running your analysis. We use **BIDSto3col.sh** script to
 extract the 3 column files.
 
-in your terminal:
+in your *base terminal*:
 
-`cd \~`
-
-`git clone http://github.com/bids-standard/bidsutils.git`
-
-`cd bidsutils/BIDSto3col`
-
-`bash BIDSto3col.sh  \~/ds000157/sub-01/func/sub-01_task-passiveimageviewing_events.tsv
-  sub-01`
+```
+cd ~;
+git clone http://github.com/bids-standard/bidsutils.git;
+cd bidsutils/BIDSto3col;
+bash BIDSto3col.sh  ~/ds000157/sub-01/func/sub-01_task-passiveimageviewing_events.tsv sub-01;
+```
 
 you should see three files created:
 
@@ -303,7 +300,7 @@ you should see three files created:
 ![](images/lab4/media/image18.png)
 
 **Copy the three created .txt files from
-/home/student/bidsutils/BIDSto3col/ to \~/ds000157/sub-01/func/**
+`~/bidsutils/BIDSto3col/` to `~/ds000157/sub-01/func/`**
 
 ## Names:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
