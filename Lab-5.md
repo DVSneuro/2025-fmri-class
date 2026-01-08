@@ -23,10 +23,11 @@ mkdir ~/Lab_5
 ### 1.2 Download the Data
 This lab uses a preprocessed dataset (~7 GB) hosted on OneDrive.
 
-⚠️ Due to OneDrive’s limitations, **you must download this file manually via your browser**:
+⚠️ Due to OneDrive’s limitations, **you must download this file manually via your Neurodesk browser**:
 
 
 [Download Lab 5 Data from OneDrive](https://tuprd-my.sharepoint.com/:u:/g/personal/tug87422_temple_edu/ESth1ajeuLZIuGqLeXKtv7IBMtM0lwj7zvXogjTt5TVbCA?e=GaaTLT)
+This is 7 GB compressed file so will take a while (or more) to download, so please do so ahead of time. 
 
 Once downloaded, move the file into your working directory and unzip it:
 
@@ -53,11 +54,11 @@ In the FEAT window:
 ![FEAT window setup for Level 2](https://github.com/user-attachments/assets/4b5b70e7-4af1-44b6-8af4-5cb64e249954)
 
 ### 2.2. Configure the Data Tab
-- Output directory: `/home/student/Lab_5/L2_OUTPUT`
+- Output directory: `~/Lab_5/L2_OUTPUT`
 - Number of inputs: **5** (one for each run)
 - Click **Select FEAT directories**:
   - For each row, click the folder icon and navigate to the appropriate run-level `.feat` directory:
-    - e.g., `/home/student/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-104/L1_task-trust_model-01_type-act_run-01_sm-6.feat`
+    - e.g., `~/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-104/L1_task-trust_model-01_type-act_run-01_sm-6.feat`
     - Repeat for all five runs (copy the first feat name and change the run number).
 
 
@@ -91,7 +92,7 @@ In the FEAT window:
 ### 3.2. Configure the Data Tab
 ![Selecting input FEAT directories L3](https://github.com/DVSneuro/2025-fmri-class/blob/main/images/lab5_image_04.png)
 
-- Output directory: `/home/student/Lab_5/L3_Cope11`
+- Output directory: `~/Lab_5/L3_Cope11`
 - Set input type to: `3D cope images from FEAT directories`
 - Number of inputs: **6** (one per subject)
 - Click **Select FEAT directories**, then add the `cope11.feat` directory for each subject.
