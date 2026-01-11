@@ -94,6 +94,7 @@ In the FEAT window:
 
 ### 3.2. Configure the Data Tab
 <img width="435" height="435" alt="image" src="https://github.com/user-attachments/assets/d4df0a49-66a2-4e37-a3c9-aa597614022d" />
+
 - Output directory: `~/Lab_5/L3_Cope11`
 - Set input type to: `3D cope images from FEAT directories`
 - Number of inputs: **6** (one per subject)
