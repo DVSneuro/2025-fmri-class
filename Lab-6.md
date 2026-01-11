@@ -204,9 +204,9 @@ Set **Number of EVs** to **5** and configure as follows:
 ### 5.6 Contrasts Tab
 
 Set **10 contrasts**. Fill based on course materials.
+
 <img width="417" height="448" alt="image" src="https://github.com/user-attachments/assets/96ecda64-7dca-4d22-a724-f1263120adcc" />
 
-![Contrast matrix screenshot](images/lab06_image06.png)
 Select Done. A window displaying the model should pop up. The design matrix should look as follows:
 
 ![Design matrix screenshot](images/lab06_image03.png)
