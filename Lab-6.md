@@ -29,38 +29,45 @@ We’ve covered task-dependent activity analyses in previous labs. In this lab w
 
 ## Make Anatomical (i.e., Atlas-Based) Masks
 
+In your *fsl* terminal: 
 ```bash
 # Create and enter the folder for the lab
 mkdir ~/Lab_6/
 cd Lab_6
 
-# Set brain atlas path
-atlas=~/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz
+# Set brain atlas path: this path apply if you are using fsl-6.0.7.16; change fsl folder name accordingly if you are loading a earlier version
+atlas=/opt/fsl-6.0.7.16/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz
 ```
-Open the atlas' associated XML file to find region index that is associated the Juxtapositional Lobule Cortex (formerly Supplementary Motor Cortex).  
+Agian in your *fsl* terminal, open the atlas' associated XML file to find region index that is associated the Juxtapositional Lobule Cortex (formerly Supplementary Motor Cortex).  
 
+In your *fsl* terminal: 
 ``` bash
-microsoft-edge ~/fsl/data/atlases/HarvardOxford-Cortical.xml &
+more /opt/fsl-6.0.7.16/data/atlases/HarvardOxford-Cortical.xml 
 ```
-![Figure](images/lab06_image04.png)
-> Note: FSL indexing is generally 0-based. Add 1 to the index for ROI voxel value. 
+<img width="948" height="789" alt="image" src="https://github.com/user-attachments/assets/4b81b965-df2a-4218-bcc2-b1676e8b8de9" />
 
+> Note: FSL indexing generally 0-based. Add 1 to the index to locate ROI voxel value. 
+
+Continue in *fsl* terminal, 
 ```bash
 # Extract with fslmaths
 fslmaths $atlas -thr 26 -uthr 26 -bin JLC
 
-# Use `fslview` to verify ROIs visually.
-fslview_deprecated JLC &
+# Use `fsleyes` to verify ROIs visually; open a MNI standardized brain template to see the relative position
+fsleyes JLC &
 ```
-![Figure](images/lab06_image01.png)
+<img width="1706" height="890" alt="image" src="https://github.com/user-attachments/assets/11a23921-1ce4-4ac2-ac7c-9aeccaa22923" />
+
 
 ---
 
 ## Move ROI to Native Space (cf. Lab 4)
 
-Normalize standard space mask (JLC.nii) into native space using pre-estimated transformation matrix, the output falls in the your Lab_6 directory (reg/standard2example_func.mat). 
+Using fsl function *flirt* (FMRIB’s Linear Image Registration Tool) to transform standard space mask (JLC.nii) into native space using pre-estimated transformation matrix, the output falls in the your Lab_6 directory (reg/standard2example_func.mat). 
 
 > Make sure you use the name you set for your sequence pilot output feat directory in Lab 4 to swap out “YOUR_OUTPUT.feat” in the following command to be able to locate the local space reference image and transformation matrix.
+
+In *fsl* terminal: 
 ```bash
 flirt -in JLC.nii.gz \
   -ref ~/Lab_4/YOUR_OUTPUT.feat/example_func.nii.gz \
@@ -70,11 +77,11 @@ flirt -in JLC.nii.gz \
   -datatype float
 ```
 
-Threshold away voxels of lower intensity
+Threshold away voxels of lower intensity in *fsl* terminal:
 ```bash
 fslmaths standardMask2example_func_JLC -thr 0.5 standardMask2example_func_JLC
 ```
-Binarize (i.e., make within-ROI voxels 1s and out-ROI 0s) 
+Then binarize the mask (i.e., make within-ROI voxels 1s and out-ROI 0s) 
 ```bash
 fslmaths standardMask2example_func_JLC -bin standardMask2example_func_JLC
 ```
@@ -112,7 +119,7 @@ Keep the default settings of First-level analysis and Full analysis are selected
 
 - Load BOLD data:  
   `~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz`
-- Name output directory: `/home/student/Lab_6/OUTPUT.feat`
+- Name output directory: `~/Lab_6/OUTPUT.feat`
 
 ---
 
@@ -124,7 +131,7 @@ Keep the default settings of First-level analysis and Full analysis are selected
 - Highpass for Temporal filtering
 - MELODIC ICA data exploration turned on (we will compare this output with feat outputs) 
 
-![image](https://github.com/user-attachments/assets/acca4703-ea53-4313-99ab-8c6a5c5b8c10)
+<img width="504" height="406" alt="image" src="https://github.com/user-attachments/assets/7343eb1d-ceba-401a-af0c-40da74a49627" />
 
 Note that in your report.html output under the pre-stats section you should also see a link for MELODIC Data Exploration. Click on that link and view the output. You should see that MELODIC has reduced your data into a set of components (think back to the lecture and textbook and ask questions if this isn’t clear). Some of the spatial maps and time courses may resemble what you see in your GLM results. 
 
@@ -136,7 +143,8 @@ Note that in your report.html output under the pre-stats section you should also
 
 - Standard space option: Leave as default  (MNI152_T1_2mm_brain)
 - Linear options: Use Normal search and 12 DOF.
-![Figure](images/lab06_image08.png)
+<img width="503" height="406" alt="image" src="https://github.com/user-attachments/assets/e7a3fe41-387b-4c30-aa70-42ab3fc4e6a6" />
+
 ---
 
 ### 5.5 Stats Tab
@@ -145,20 +153,22 @@ Set **Number of EVs** to **5** and configure as follows:
 1. Click the EV1 tab and make the following selections: 
 - EV name: Left
 - Basic shape: Custom (3 column format)
-- Filename: Select the folder icon and navigate to: /home/student/ds005085/sub-10015/func/_guess_allLeftButton.txt
+- Filename: Select the folder icon and navigate to: ~/ds005085/sub-10015/func/_guess_allLeftButton.txt
 - Convolution: Double-Gamma HRF
 - DE-SELECT the option "Add temporal derivative"
   
-![Figure](images/lab06_image05.png)
+<img width="416" height="577" alt="image" src="https://github.com/user-attachments/assets/c8ee73b0-ed1b-48bc-ac78-fb416edce375" />
+
 
 2. Click the EV2 tab and make the following selections: 
 - EV name: Right
 - Basic shape: Custom (3 column format)
-- Filename: select the folder icon and navigate to /home/student/ds005085/sub-10015/func/_guess_allRightButton.txt
+- Filename: select the folder icon and navigate to ~/ds005085/sub-10015/func/_guess_allRightButton.txt
 - Convolution: Double-Gamma HRF
 - DE-SELECT the option "Add temporal derivative"
-  
-![Figure](images/lab06_image02.png)
+
+<img width="415" height="421" alt="image" src="https://github.com/user-attachments/assets/a3ce2ae6-6aa8-4aa1-b443-12a408777503" />
+
 
 3. Click the EV3 tab and make the following selections: 
 - EV name: Phys
@@ -167,7 +177,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Convolution: NONE
 - DE-SELECT the option "Add temporal derivative" & “Apply temporal filtering”
 
-![Figure](images/lab06_image13.png)
+<img width="417" height="421" alt="image" src="https://github.com/user-attachments/assets/f1c236d1-0dc3-434b-9aa1-36100643cd3e" />
+
 
 4. Click the EV4 tab and make the following selections:
 - EV name: PPI_Left
@@ -175,9 +186,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Between Evs: 1 & 3
 - Make zero: min, min, mean
 - DE-SELECT the option "Add temporal derivative"
-  
-![Figure](images/lab06_image09.png)
 
+<img width="414" height="418" alt="image" src="https://github.com/user-attachments/assets/8aea43e0-8c3f-4402-a2b4-256b61eab75b" />
 
 5. Click the EV5 tab and make the following selections: 
 - EV name: PPI_Right 
@@ -186,13 +196,15 @@ Set **Number of EVs** to **5** and configure as follows:
 - Make zero: min, min, mean, min 
 - DE-SELECT the option "Add temporal derivative"
  
-![Figure](images/lab06_image07.png)
+<img width="422" height="419" alt="image" src="https://github.com/user-attachments/assets/159e7026-1b5b-4042-b004-89aa1ce4efab" />
+
 
 ---
 
 ### 5.6 Contrasts Tab
 
 Set **10 contrasts**. Fill based on course materials.
+<img width="417" height="448" alt="image" src="https://github.com/user-attachments/assets/96ecda64-7dca-4d22-a724-f1263120adcc" />
 
 ![Contrast matrix screenshot](images/lab06_image06.png)
 Select Done. A window displaying the model should pop up. The design matrix should look as follows:
@@ -205,12 +217,11 @@ Close the window
 
 Leave the default settings. Check that they are the same as in the picture below.  Press Go on the bottom left to run the analysis
 
-![Figure](images/lab06_image11.png)
+<img width="501" height="405" alt="image" src="https://github.com/user-attachments/assets/2e0f791e-4c41-4db0-9605-d2af120527c6" />
 
-View output:
-```bash
-microsoft-edge /home/student/Lab_6/OUTPUT.feat/report.html &
-```
+
+View output in Neurodesk's Firefox: `~/Lab_6/OUTPUT.feat/report.html &`
+
 
 ---
 
