@@ -30,7 +30,6 @@ This lab uses a preprocessed dataset (~7 GB) hosted on OneDrive.
 This is 7 GB compressed file so will take a while (or more) to download, so please do so ahead of time. 
 
 Once downloaded, move the file into your working directory and unzip it:
-
 ```bash
 mv ~/Downloads/__forNSCI8010_L2L3stats+PPI.zip ~/Lab_5/
 cd ~/Lab_5
@@ -44,6 +43,7 @@ This will extract Level 1 FEAT directories for runs 1–5 for each subject.
 ## Step 2: Running Level 2 (Within-Subject) Analysis
 
 ### 2.1. Launch FEAT
+In your *fsl* terminal, enter 
 ```bash
 Feat &
 ```
@@ -51,7 +51,8 @@ In the FEAT window:
 - Change from **First-level analysis** → **Higher-level analysis**
 - Change from **Full analysis** → **Statistics only**
 
-![FEAT window setup for Level 2](https://github.com/user-attachments/assets/4b5b70e7-4af1-44b6-8af4-5cb64e249954)
+<img width="894" height="435" alt="image" src="https://github.com/user-attachments/assets/043b80c9-87eb-4225-bb80-f38e1bbd526f" />
+
 
 ### 2.2. Configure the Data Tab
 - Output directory: `~/Lab_5/L2_OUTPUT`
@@ -59,7 +60,8 @@ In the FEAT window:
 - Click **Select FEAT directories**:
   - For each row, click the folder icon and navigate to the appropriate run-level `.feat` directory:
     - e.g., `~/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-104/L1_task-trust_model-01_type-act_run-01_sm-6.feat`
-    - Repeat for all five runs (copy the first feat name and change the run number).
+    - Repeat for all five runs (for convenience, CTRL-SHIFT-A to select the path, copy-paste (CTRL-V) the first feat path, and change the run number).
+![Selecting input FEAT directories L3](https://github.com/DVSneuro/2025-fmri-class/blob/main/images/lab5_image_04.png)
 
 
 ### 2.3. Configure the Stats Tab
@@ -71,7 +73,8 @@ In the FEAT window:
 
   - Set 2 contrasts, one positive (+1) one negative (-1)
 
-![Fixed effects model setup in Level 2](images/lab5_image_03.png)
+<img width="342" height="343" alt="image" src="https://github.com/user-attachments/assets/75572b4b-9826-441c-b1d0-af4dc54e11c1" />
+
 
 ### 2.4. Post-Stats Tab
 - Leave default settings
@@ -90,22 +93,23 @@ In the FEAT window:
 - Choose **Statistics only**
 
 ### 3.2. Configure the Data Tab
-![Selecting input FEAT directories L3](https://github.com/DVSneuro/2025-fmri-class/blob/main/images/lab5_image_04.png)
-
+<img width="435" height="435" alt="image" src="https://github.com/user-attachments/assets/d4df0a49-66a2-4e37-a3c9-aa597614022d" />
 - Output directory: `~/Lab_5/L3_Cope11`
 - Set input type to: `3D cope images from FEAT directories`
 - Number of inputs: **6** (one per subject)
 - Click **Select FEAT directories**, then add the `cope11.feat` directory for each subject.
 
-**Pro-tip:** You can use the terminal to quickly list the paths:
+
+**Pro-tip:** You can use either kind of terminal to quickly list the paths:
 ```bash
-ls -1d `pwd`/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-1*/L2*-act_sm-6.gfeat/cope11.feat/stats/cope1.nii.gz
+ls -1d ~/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-1*/L2*-act_sm-6.gfeat/cope11.feat/stats/cope1.nii.gz
 ```
 Then copy the output, and in the FEAT GUI, click **Paste** at the bottom of the selection window.
 ![image](https://github.com/user-attachments/assets/f6fec011-7668-4211-8016-09c09039aaa3)
 
-Use `Ctrl+Y` to paste and press OK.
-![image](https://github.com/user-attachments/assets/57e67a72-1c96-4019-9e23-7bf33c538c5f)
+Use `Ctrl+V` to paste and press OK.
+
+<img width="595" height="410" alt="image" src="https://github.com/user-attachments/assets/5068207e-5210-42c9-ad8c-34e745505acf" />
 
 
 ### 3.3. Configure the Stats Tab
