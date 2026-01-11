@@ -113,7 +113,7 @@ for task in sharedreward; do
 done
 ```
 
-# the main scriptL: L1stats.sh 
+# The main script: L1stats.sh 
 ```
 #!/usr/bin/env bash
 # --------------------------------------------------
