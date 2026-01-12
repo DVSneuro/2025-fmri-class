@@ -1,10 +1,10 @@
 # Overview
 Parallel to L1 and L2 scripts set, these two scripts for L3 (group-level) analyses consists of 
-- `run_L3stats.sh` that loops over all contrasts and all analysis types and act as a parallel job launcher, calling L3stats.sh for each contrast.
+- `run_L3stats.sh` that loops over all contrasts and all analysis types and acts as a parallel job launcher, calling L3stats.sh for each contrast.
 - `L3stats.sh` performs Level 3 FEAT analyses for one contrast (cope/contrast of parameter estimates) and one model.
 
-# Input required 
-1. An input template where all the L1/L2 input paths (relative path accommodating contrast information), GLM matrix with covariates or ones, and L3 contrast are defined. 
+# Inputs required 
+1. An input template where all the L1/L2 output as L3 input paths (relative path accommodating contrast information), GLM matrix with covariates or ones, and L3 contrast are defined. 
 2. The L2/L1 outputs are located in BIDS compliant directory and consistent with the input paths in the input template 
 
 # run_L3stats.sh: passing contrast nature (number and name) and analysis type to `L3stats. sh`
