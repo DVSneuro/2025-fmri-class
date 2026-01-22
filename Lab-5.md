@@ -51,8 +51,7 @@ In the FEAT window:
 - Change from **First-level analysis** → **Higher-level analysis**
 - Change from **Full analysis** → **Statistics only**
 
-<img width="894" height="435" alt="image" src="https://github.com/user-attachments/assets/043b80c9-87eb-4225-bb80-f38e1bbd526f" />
-
+![](images/lab5_54.png)
 
 ### 2.2. Configure the Data Tab
 - Output directory: `~/Lab_5/L2_OUTPUT`
@@ -69,12 +68,10 @@ In the FEAT window:
 - Click **Full model setup**
   - EV1 Name: `Run_Average`
   - For each input, set the EV1 value to `1`
-![image](https://github.com/user-attachments/assets/250ee0a1-3d9e-4838-9d7f-d0c0e3b5d434)
-
+   ![](images/lab5_72.png)
   - Set 2 contrasts, one positive (+1) one negative (-1)
 
-<img width="342" height="343" alt="image" src="https://github.com/user-attachments/assets/75572b4b-9826-441c-b1d0-af4dc54e11c1" />
-
+   ![](images/lab5_76.png)
 
 ### 2.4. Post-Stats Tab
 - Leave default settings
@@ -93,7 +90,7 @@ In the FEAT window:
 - Choose **Statistics only**
 
 ### 3.2. Configure the Data Tab
-<img width="435" height="435" alt="image" src="https://github.com/user-attachments/assets/d4df0a49-66a2-4e37-a3c9-aa597614022d" />
+![](images/lab5_96.png)
 
 - Output directory: `~/Lab_5/L3_Cope11`
 - Set input type to: `3D cope images from FEAT directories`
@@ -106,12 +103,11 @@ In the FEAT window:
 ls -1d ~/Lab_5/__forNSCI8010_L2L3stats+PPI/sub-1*/L2*-act_sm-6.gfeat/cope11.feat/stats/cope1.nii.gz
 ```
 Then copy the output, and in the FEAT GUI, click **Paste** at the bottom of the selection window.
-![image](https://github.com/user-attachments/assets/f6fec011-7668-4211-8016-09c09039aaa3)
+![](images/lab5_109.png)
 
 Use `Ctrl+V` to paste and press OK.
 
-<img width="595" height="410" alt="image" src="https://github.com/user-attachments/assets/5068207e-5210-42c9-ad8c-34e745505acf" />
-
+![](images/lab5_113.png)
 
 ### 3.3. Configure the Stats Tab
 - Mixed effects: `FLAME 1`
