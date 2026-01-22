@@ -44,7 +44,8 @@ In your *fsl* terminal:
 ``` bash
 more /opt/fsl-6.0.7.16/data/atlases/HarvardOxford-Cortical.xml 
 ```
-<img width="948" height="789" alt="image" src="https://github.com/user-attachments/assets/4b81b965-df2a-4218-bcc2-b1676e8b8de9" />
+
+![](images/lab6_47.png)
 
 > Note: FSL indexing generally 0-based. Add 1 to the index to locate ROI voxel value. 
 
@@ -56,8 +57,8 @@ fslmaths $atlas -thr 26 -uthr 26 -bin JLC
 # Use `fsleyes` to verify ROIs visually; open a MNI standardized brain template to see the relative position
 fsleyes JLC &
 ```
-<img width="1706" height="890" alt="image" src="https://github.com/user-attachments/assets/11a23921-1ce4-4ac2-ac7c-9aeccaa22923" />
 
+![](images/lab6_59.png)
 
 ---
 
@@ -131,7 +132,8 @@ Keep the default settings of First-level analysis and Full analysis are selected
 - Highpass for Temporal filtering
 - MELODIC ICA data exploration turned on (we will compare this output with feat outputs) 
 
-<img width="504" height="406" alt="image" src="https://github.com/user-attachments/assets/7343eb1d-ceba-401a-af0c-40da74a49627" />
+![](images/lab6_133.png)
+
 
 Note that in your report.html output under the pre-stats section you should also see a link for MELODIC Data Exploration. Click on that link and view the output. You should see that MELODIC has reduced your data into a set of components (think back to the lecture and textbook and ask questions if this isn’t clear). Some of the spatial maps and time courses may resemble what you see in your GLM results. 
 
@@ -143,7 +145,8 @@ Note that in your report.html output under the pre-stats section you should also
 
 - Standard space option: Leave as default  (MNI152_T1_2mm_brain)
 - Linear options: Use Normal search and 12 DOF.
-<img width="503" height="406" alt="image" src="https://github.com/user-attachments/assets/e7a3fe41-387b-4c30-aa70-42ab3fc4e6a6" />
+
+![](images/lab6_145.png)
 
 ---
 
@@ -157,7 +160,7 @@ Set **Number of EVs** to **5** and configure as follows:
 - Convolution: Double-Gamma HRF
 - DE-SELECT the option "Add temporal derivative"
   
-<img width="416" height="577" alt="image" src="https://github.com/user-attachments/assets/c8ee73b0-ed1b-48bc-ac78-fb416edce375" />
+![](images/lab6_159.png)
 
 
 2. Click the EV2 tab and make the following selections: 
@@ -167,8 +170,7 @@ Set **Number of EVs** to **5** and configure as follows:
 - Convolution: Double-Gamma HRF
 - DE-SELECT the option "Add temporal derivative"
 
-<img width="415" height="421" alt="image" src="https://github.com/user-attachments/assets/a3ce2ae6-6aa8-4aa1-b443-12a408777503" />
-
+![](images/lab6_169.png)
 
 3. Click the EV3 tab and make the following selections: 
 - EV name: Phys
@@ -177,8 +179,7 @@ Set **Number of EVs** to **5** and configure as follows:
 - Convolution: NONE
 - DE-SELECT the option "Add temporal derivative" & “Apply temporal filtering”
 
-<img width="417" height="421" alt="image" src="https://github.com/user-attachments/assets/f1c236d1-0dc3-434b-9aa1-36100643cd3e" />
-
+![](images/lab6_179.png)
 
 4. Click the EV4 tab and make the following selections:
 - EV name: PPI_Left
@@ -187,7 +188,7 @@ Set **Number of EVs** to **5** and configure as follows:
 - Make zero: min, min, mean
 - DE-SELECT the option "Add temporal derivative"
 
-<img width="414" height="418" alt="image" src="https://github.com/user-attachments/assets/8aea43e0-8c3f-4402-a2b4-256b61eab75b" />
+![](images/lab6_189.png)
 
 5. Click the EV5 tab and make the following selections: 
 - EV name: PPI_Right 
@@ -195,9 +196,8 @@ Set **Number of EVs** to **5** and configure as follows:
 - Between Evs: 2 & 3 
 - Make zero: min, min, mean, min 
 - DE-SELECT the option "Add temporal derivative"
- 
-<img width="422" height="419" alt="image" src="https://github.com/user-attachments/assets/159e7026-1b5b-4042-b004-89aa1ce4efab" />
 
+![](images/lab6_198.png)
 
 ---
 
@@ -205,7 +205,7 @@ Set **Number of EVs** to **5** and configure as follows:
 
 Set **10 contrasts**. Fill based on course materials.
 
-<img width="417" height="448" alt="image" src="https://github.com/user-attachments/assets/96ecda64-7dca-4d22-a724-f1263120adcc" />
+![](images/lab6_207.png)
 
 Select Done. A window displaying the model should pop up. The design matrix should look as follows:
 
@@ -217,8 +217,7 @@ Close the window
 
 Leave the default settings. Check that they are the same as in the picture below.  Press Go on the bottom left to run the analysis
 
-<img width="501" height="405" alt="image" src="https://github.com/user-attachments/assets/2e0f791e-4c41-4db0-9605-d2af120527c6" />
-
+![](images/lab6_219.png)
 
 View output in Neurodesk's Firefox: `~/Lab_6/OUTPUT.feat/report.html &`
 
