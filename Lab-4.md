@@ -94,8 +94,11 @@ together, and then you'll work through the OpenNeuro data on your own.
 - Click the **4D data** button & Navigate to `~/ds005085/sub-10015/func/sub-10015_task-sharedreward_acq-mb3me1_bold.nii.gz`. This is the BOLD data that we are analyzing.
 - Output directory: `～/Lab_4/OUTPUT`
 
-<img width="811" height="493" alt="image" src="https://github.com/user-attachments/assets/6e377c15-d1c9-4444-9226-e5d08d8c1409" />
-<img width="506" height="405" alt="image" src="https://github.com/user-attachments/assets/56b099ee-4ea6-434e-ae67-79880c90c6ce" />
+![](images/lab4/media/lab4_97.png)
+
+
+![](images/lab4/media/lab4_98.png)
+
 
 
 ### 2.3. Pre-stats tab:
@@ -118,7 +121,8 @@ options.
     need to do slice timing correction here since it is an event-related
     design whose slices were collected in descending order.
 
-<img width="507" height="407" alt="image" src="https://github.com/user-attachments/assets/0f1df6d7-161e-492f-b0d8-be3649666328" />
+
+![](images/lab4/media/lab4_121.png)
 
 
 ### 2.4. Registration tab:
@@ -133,7 +137,8 @@ Leave default options for **Standard space option.**
 The default image should be **MNI152_T1_2mm_brain** with linear
 registration options **Normal search** and **12 DOF**.
 
-<img width="505" height="403" alt="image" src="https://github.com/user-attachments/assets/48e63d09-61c6-4656-8f08-16f24c87f30e" />
+![](images/lab4/media/lab4_136.png)
+
 
 ### 2.5. Stats tab:
 
@@ -156,7 +161,7 @@ open
 
 (Keep the option \"Apply temporal filtering\")
 
-<img width="381" height="415" alt="image" src="https://github.com/user-attachments/assets/2ab9da72-94f7-4b7c-bd4f-0911adb4ad82" />
+![](images/lab4/media/lab4_159.png)
 
   
   c.  Click the **EV2** tab and make the following selections:
@@ -174,7 +179,7 @@ open
 
 (Keep the option Apply temporal filtering)
 
-<img width="381" height="422" alt="image" src="https://github.com/user-attachments/assets/388bfa07-76de-40f3-bbe1-aa3c8f28dd4c" />
+![](images/lab4/media/lab4_177.png)
 
 8\. Select the **Contrasts & F-tests** tab
 
@@ -200,7 +205,7 @@ confidence](images/lab4/media/image9.png)
 Leave the default settings. Check that they are the same as in the
 picture below.
 
-<img width="508" height="411" alt="image" src="https://github.com/user-attachments/assets/5c70f89b-a7b6-455a-b0f9-05d59c49fe99" />
+![](images/lab4/media/lab4_203.png)
 
 
 Note "Thresholding" is where cluster-extent and voxel height-based
