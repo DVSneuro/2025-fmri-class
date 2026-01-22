@@ -69,8 +69,7 @@ analyses?**
 Go to the **Misc** tab let's **& turn off Progress Watcher**. Note that
 the stony-grey box is unselected, and the yellow box is selected
 
-<img width="518" height="418" alt="image" src="https://github.com/user-attachments/assets/64247987-0244-49f8-811d-67a39d26cc10" />
-
+![](images/lab3/media/lab3_re1_line72.png)
 
 **Balloon help**: is a tool that will explain the various options
 available to you by hovering your mouse over it. Try it with a few
@@ -85,8 +84,7 @@ help)**
 ## **2.1 Selecting your Data**
 
 **Click "Data" tab and change the following settings**
-<img width="509" height="406" alt="image" src="https://github.com/user-attachments/assets/a576d325-de15-4c9b-8d8c-1400c94c0a9c" />
-
+![](images/lab3/media/lab3_line88.png)
 
 - Number of Inputs: 1
 - Select 4D data:
@@ -117,8 +115,7 @@ extracted image, binary brain mask and skull surface image - see
 Advanced Options tab) but leave the other settings as they are. Note
 that the GUI suggests the default output name originalfilename_brain.
 
-
-<img width="594" height="413" alt="image" src="https://github.com/user-attachments/assets/4cae0f94-e2e0-4c2a-8ae2-366fe8c8399a" />
+![](images/lab3/media/lab3_line121.png)
 
 
 When done click on *Go* to run BET and then exit the GUI once it\'s done.
@@ -137,8 +134,7 @@ stripped anatomical image.
 **Performing skull-stripping for functional image as the only preprocessing step in Feat pre-stats tab:**
 Uncheck all options except for BET brain extraction and hit go
 
-<img width="507" height="406" alt="image" src="https://github.com/user-attachments/assets/5287426b-bd05-4136-8c07-ae8ac6209347" />
-
+![](images/lab3/media/lab3_line140.png)
 
 Then make sure you choose the input file under the registration tab
 before hitting go.
@@ -167,9 +163,7 @@ incorrect.](images/lab3/media/image7.png)
 
 Uncheck all options **except** for Motion Correction MCFLIRT and hit go. 
 
-<img width="508" height="411" alt="image" src="https://github.com/user-attachments/assets/7c45890e-3786-4363-a96a-389d55d9a750" />
-
-
+![](images/lab3/media/lab3_line170.png)
 
 After hitting go, wait shortly for the output to generate, then again,
 look in the new feat directory and look at the filtered_func_data
@@ -185,7 +179,7 @@ Create a new output under data tab before named something like
 2mm_smoothing. Keeping other setting inactivated and select a smoothing
 kernel under pre-stats tab of 2 and hit go.
 
-<img width="506" height="408" alt="image" src="https://github.com/user-attachments/assets/38310092-835e-4c60-a025-120a15803f0d" />
+![](images/lab3/media/lab3_line188.png)
 
 
 Do the same step using 5mm and 15 mm smoothing kernels.
@@ -200,7 +194,7 @@ Go back to pre-stats and deselect everything but highpass under temporal
 filtering, then rename the output feat folder name again under the Data
 tab.
 
-<img width="505" height="406" alt="image" src="https://github.com/user-attachments/assets/09989b21-f4b4-470a-9ca7-cfed9a6e6def" />
+![](images/lab3/media/lab3_line203.png)
 
 
 **Q7. Use fsleyes & to compare the before and after data
@@ -214,7 +208,9 @@ next tab that says Registration. For main structural select the skull
 stripped anatomical that we created earlier with bet. For the
 **standard** make sure it says MNI152_T1_2mm_brain.
 
-<img width="505" height="407" alt="image" src="https://github.com/user-attachments/assets/c453520a-6333-4f1d-b9a1-f4bb04fb67b8" />
+![](images/lab3/media/lab3_line217.png)
+
+
 
 The output html page provided in Feat
 should show how good we did with Registration. Click Go.
@@ -224,8 +220,7 @@ enter
 
 "/home/student/Lab_3/YOURNAMEFORIT.feat/report_reg.html"
 
-<img width="958" height="722" alt="image" src="https://github.com/user-attachments/assets/b11bcd2a-dd73-4d0d-9e9b-0878133811ab" />
-
+![](images/lab3/media/lab3_line227.png)
 
 The registration output displays a red outline on top a greyscale image
 of another brain. The first shows an average image of fMRI data as the
